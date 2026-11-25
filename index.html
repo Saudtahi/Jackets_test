@@ -1,0 +1,2624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EAGLES JACKETS — Luxury Outerwear | Shopify OS 2.0 Theme Preview</title>
+
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Inter (Clean UI Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              DEFAULT: '#123D2B',
+              dark: '#0B281D',
+              secondary: '#1D513A',
+            },
+            gold: {
+              DEFAULT: '#C6A15B',
+              light: '#D9BC82',
+            },
+            offwhite: '#F7F8F5',
+            ink: {
+              DEFAULT: '#202820',
+              muted: '#777F78',
+            },
+            hairline: '#E5E9E5',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --forest: #123D2B;
+      --forest-dark: #0B281D;
+      --forest-secondary: #1D513A;
+      --white: #FFFFFF;
+      --offwhite: #F7F8F5;
+      --gold: #C6A15B;
+      --ink: #202820;
+      --muted: #777F78;
+      --border: #E5E9E5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background-color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-editorial {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* Subtle linen/studio paper texture for product cards */
+    .studio-card-bg {
+      background: radial-gradient(circle at 50% 35%, #FFFFFF 0%, #F7F8F5 68%, #ECEFE9 100%);
+    }
+
+    .studio-card-dark {
+      background: radial-gradient(circle at 50% 35%, #1D513A 0%, #123D2B 65%, #0B281D 100%);
+    }
+
+    /* Disabled size strike-through styling */
+    .size-disabled {
+      position: relative;
+      color: #B4BCB5;
+      border-color: #E5E9E5;
+      background-color: #FAFBF9;
+      cursor: not-allowed;
+      overflow: hidden;
+    }
+    .size-disabled::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -10%;
+      width: 120%;
+      height: 1px;
+      background-color: #C8CFC9;
+      transform: rotate(-28deg);
+    }
+
+    /* Custom subtle scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F7F8F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C5CCC6;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #123D2B;
+    }
+
+    /* Drawer transitions */
+    .drawer-panel {
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* View fade-in */
+    .view-section {
+      animation: fadeUp 0.28s ease-out;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mega menu hover & active transition */
+    .mega-menu-panel {
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    /* Hide scrollbar for horizontal strips */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-white text-ink selection:bg-forest selection:text-white">
+
+  <!-- ===================================================================== -->
+  <!-- TOP-MOST SHOPIFY OS 2.0 THEME PREVIEW SWITCHER BAR                    -->
+  <!-- ===================================================================== -->
+  <div id="preview-bar" class="bg-forest-dark text-white border-b border-white/10 text-xs sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gold/15 border border-gold/40 text-gold font-medium tracking-wider uppercase text-[10px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+          Theme Preview — Demo Catalog
+        </span>
+        <span class="hidden lg:inline text-white/60 text-[11px]">Shopify Online Store 2.0 Architecture</span>
+      </div>
+
+      <!-- View Switcher Buttons -->
+      <nav aria-label="Theme View Switcher" class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar">
+        <button data-view-btn="home" onclick="navigateTo('home')" class="preview-tab px-3 py-1 rounded-md text-[11px] font-medium tracking-wide transition-all whitespace-nowrap">
+          Homepage
+        </button>
+        <button data-view-btn="collection" onclick="navigateTo('collection')" class="preview-tab px-3 py-1 rounded-md text-[11px] font-medium tracking-wide transition-all whitespace-nowrap">
+          Collection + Filters
+        </button>
+        <button data-view-btn="pdp" onclick="navigateTo('pdp')" class="preview-tab px-3 py-1 rounded-md text-[11px] font-medium tracking-wide transition-all whitespace-nowrap">
+          Product Detail Page
+        </button>
+        <button data-view-btn="custom" onclick="navigateTo('custom')" class="preview-tab px-3 py-1 rounded-md text-[11px] font-medium tracking-wide transition-all whitespace-nowrap">
+          Custom Jacket Studio
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- ANNOUNCEMENT BAR                                                      -->
+  <!-- ===================================================================== -->
+  <div class="bg-forest text-white text-[11px] sm:text-xs tracking-[0.14em] uppercase border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center sm:justify-between">
+      <span class="hidden sm:inline text-white/70">International Express Delivery: US • UK • CA • Worldwide</span>
+      <span class="text-gold font-medium text-center">Complimentary Express Shipping Over <span data-price-usd="250">$250</span> &nbsp;|&nbsp; Made-to-Order Studio Open</span>
+      <div class="hidden md:flex items-center gap-2">
+        <label for="top-currency" class="sr-only">Market Currency</label>
+        <select id="top-currency" onchange="setCurrency(this.value)" class="bg-transparent text-white/90 text-[11px] font-medium tracking-wider uppercase focus:outline-none cursor-pointer">
+          <option value="USD" class="text-ink">United States (USD $)</option>
+          <option value="GBP" class="text-ink">United Kingdom (GBP £)</option>
+          <option value="CAD" class="text-ink">Canada (CAD CA$)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- STICKY LUXURY HEADER WITH MEGA MENU                                   -->
+  <!-- ===================================================================== -->
+  <header id="main-header" class="bg-white/95 backdrop-blur-md border-b border-hairline sticky top-[41px] sm:top-[37px] z-40 transition-shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="h-16 sm:h-20 flex items-center justify-between gap-4">
+
+        <!-- Left: Mobile Menu Toggle + Desktop Navigation -->
+        <div class="flex items-center gap-3 lg:w-1/3">
+          <button onclick="openMobileNav()" aria-label="Open menu" class="lg:hidden p-2 -ml-2 text-ink hover:text-forest transition-colors rounded-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h12" /></svg>
+          </button>
+
+          <nav class="hidden lg:flex items-center gap-6" aria-label="Primary Navigation">
+            <div class="relative group" onmouseenter="showMegaMenu('outerwear')" onmouseleave="scheduleHideMegaMenu()">
+              <button onclick="openCollection('All')" class="py-2 text-xs font-medium tracking-[0.14em] uppercase text-ink hover:text-forest transition-colors flex items-center gap-1">
+                Outerwear
+                <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+              </button>
+            </div>
+            <div class="relative group" onmouseenter="showMegaMenu('collections')" onmouseleave="scheduleHideMegaMenu()">
+              <button onclick="openCollection('Leather')" class="py-2 text-xs font-medium tracking-[0.14em] uppercase text-ink hover:text-forest transition-colors flex items-center gap-1">
+                Collections
+                <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+              </button>
+            </div>
+            <button onclick="navigateTo('custom')" class="py-2 text-xs font-medium tracking-[0.14em] uppercase text-forest hover:text-gold transition-colors">
+              Custom Studio
+            </button>
+          </nav>
+        </div>
+
+        <!-- Center: Typography-Only Wordmark Logo -->
+        <div class="flex-shrink-0 text-center">
+          <a href="#top" onclick="event.preventDefault(); navigateTo('home');" class="inline-flex flex-col items-center group">
+            <span class="font-editorial text-xl sm:text-2xl md:text-[26px] font-semibold tracking-[0.26em] text-forest-dark leading-none pl-[0.26em] group-hover:text-forest transition-colors">
+              EAGLES JACKETS
+            </span>
+            <span class="mt-1.5 w-10 h-[2px] bg-gold transition-all duration-300 group-hover:w-16"></span>
+          </a>
+        </div>
+
+        <!-- Right: Search, Account, Wishlist, Cart -->
+        <div class="flex items-center justify-end gap-1 sm:gap-2 lg:w-1/3">
+          <button onclick="openSearchOverlay()" aria-label="Search catalog" class="p-2.5 text-ink hover:text-forest hover:bg-offwhite rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+          </button>
+
+          <button onclick="showToast('Shopify Customer Accounts: Native login & order history connect in Phase 5.')" aria-label="Account" class="hidden sm:inline-flex p-2.5 text-ink hover:text-forest hover:bg-offwhite rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+          </button>
+
+          <button onclick="openWishlistDrawer()" aria-label="Wishlist" class="relative p-2.5 text-ink hover:text-forest hover:bg-offwhite rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+            <span id="wishlist-count-badge" class="hidden absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-gold text-forest-dark text-[10px] font-semibold flex items-center justify-center">0</span>
+          </button>
+
+          <button onclick="openCartDrawer()" aria-label="Shopping Cart" class="relative p-2.5 text-ink hover:text-forest hover:bg-offwhite rounded-lg transition-colors flex items-center gap-1.5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/></svg>
+            <span id="cart-count-badge" class="min-w-[18px] h-[18px] px-1 rounded-full bg-forest text-white text-[10px] font-semibold flex items-center justify-center">1</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Mega Menu Panel -->
+    <div id="mega-menu" onmouseenter="cancelHideMegaMenu()" onmouseleave="scheduleHideMegaMenu()" class="hidden absolute left-0 right-0 top-full bg-white border-b border-hairline shadow-xl z-40">
+      <div class="max-w-7xl mx-auto px-6 py-8 grid grid-cols-12 gap-8">
+        <div class="col-span-3 border-r border-hairline pr-6">
+          <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold mb-4">By Department</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><button onclick="openCollection('Men\'s Leather'); hideMegaMenu()" class="hover:text-forest hover:translate-x-1 transition-all">Men's Leather Outerwear</button></li>
+            <li><button onclick="openCollection('Women\'s Jackets'); hideMegaMenu()" class="hover:text-forest hover:translate-x-1 transition-all">Women's Tailored Jackets</button></li>
+            <li><button onclick="openCollection('Varsity'); hideMegaMenu()" class="hover:text-forest hover:translate-x-1 transition-all">Varsity Heritage Series</button></li>
+            <li><button onclick="openCollection('Bomber'); hideMegaMenu()" class="hover:text-forest hover:translate-x-1 transition-all">Bomber &amp; Flight Jackets</button></li>
+            <li><button onclick="openCollection('Hoodies'); hideMegaMenu()" class="hover:text-forest hover:translate-x-1 transition-all">Heavyweight Layering Hoodies</button></li>
+            <li><button onclick="openCollection('All'); hideMegaMenu()" class="font-medium text-forest underline underline-offset-4 mt-2 inline-block">View All Outerwear →</button></li>
+          </ul>
+        </div>
+        <div class="col-span-3 border-r border-hairline pr-6">
+          <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold mb-4">Craft &amp; Bespoke</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><button onclick="navigateTo('custom'); hideMegaMenu()" class="font-medium text-forest hover:text-gold transition-colors">Custom Jacket Studio</button></li>
+            <li><button onclick="openCollection('Custom'); hideMegaMenu()" class="hover:text-forest transition-colors">Made-to-Order Editions</button></li>
+            <li><button onclick="openSizeGuideModal(); hideMegaMenu()" class="hover:text-forest transition-colors">Fit &amp; Sizing Architecture</button></li>
+            <li><button onclick="navigateTo('home'); setTimeout(() => document.getElementById('craftsmanship-section')?.scrollIntoView({behavior:'smooth'}), 100); hideMegaMenu()" class="hover:text-forest transition-colors">Materials &amp; Leather Care</button></li>
+          </ul>
+        </div>
+        <div class="col-span-6 grid grid-cols-2 gap-5">
+          <div onclick="openProductById('ej-01'); hideMegaMenu()" class="cursor-pointer group rounded-xl overflow-hidden border border-hairline bg-offwhite p-4 flex items-center gap-4 hover:border-forest/40 transition-all">
+            <div id="mega-preview-1" class="w-24 h-28 flex-shrink-0 rounded-lg studio-card-bg flex items-center justify-center p-2"></div>
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.16em] text-gold font-medium">Signature Piece</span>
+              <h4 class="font-editorial text-lg font-semibold text-ink group-hover:text-forest mt-0.5">Sovereign Moto Biker</h4>
+              <p class="text-xs text-ink-muted mt-1">Full-grain aniline cowhide</p>
+              <span class="text-xs font-medium text-forest mt-2 inline-block">Inspect Piece →</span>
+            </div>
+          </div>
+          <div onclick="navigateTo('custom'); hideMegaMenu()" class="cursor-pointer group rounded-xl overflow-hidden border border-forest/20 studio-card-dark text-white p-5 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.16em] text-gold font-medium">Bespoke Tailoring</span>
+              <h4 class="font-editorial text-xl font-semibold mt-1">Commission Your Jacket</h4>
+              <p class="text-xs text-white/75 mt-1.5 leading-relaxed">Select leather grade, wool colorway, hardware finish, and custom monogramming.</p>
+            </div>
+            <span class="text-xs text-gold font-medium tracking-wider uppercase mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Enter Custom Studio →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN DYNAMIC VIEW CONTAINER                                           -->
+  <!-- ===================================================================== -->
+  <main id="top" class="min-h-screen">
+
+    <!-- =================================================================== -->
+    <!-- VIEW 1: HOMEPAGE                                                    -->
+    <!-- =================================================================== -->
+    <section id="view-home" class="view-section">
+
+      <!-- Editorial Hero Banner -->
+      <div class="relative bg-forest-dark text-white overflow-hidden">
+        <!-- Subtle architectural grid overlay -->
+        <div class="absolute inset-0 opacity-[0.06]" style="background-image: linear-gradient(to right, #C6A15B 1px, transparent 1px), linear-gradient(to bottom, #C6A15B 1px, transparent 1px); background-size: 64px 64px;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 lg:py-24 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+              <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-gold/40 bg-white/5 text-gold text-[11px] uppercase tracking-[0.18em]">
+                <span>Autumn / Winter Atelier</span>
+                <span class="w-1 h-1 rounded-full bg-gold"></span>
+                <span>Ready-Made &amp; Bespoke</span>
+              </div>
+
+              <h1 class="font-editorial text-4xl sm:text-5xl lg:text-6xl xl:text-[68px] font-medium leading-[1.06] tracking-tight text-white">
+                Architectural Outerwear, <span class="italic text-gold">Tailored</span> to Endure.
+              </h1>
+
+              <p class="text-sm sm:text-base text-white/75 max-w-xl leading-relaxed font-light">
+                Crafted from full-grain hides, heavyweight Melton wool, and precision brushed hardware. Designed for modern silhouettes across ready-to-wear and custom made-to-order commissions.
+              </p>
+
+              <div class="flex flex-wrap items-center gap-3.5 pt-2">
+                <button onclick="openCollection('All')" class="px-7 py-3.5 rounded-lg bg-white text-forest-dark hover:bg-offwhite text-xs font-semibold uppercase tracking-[0.16em] transition-all shadow-sm">
+                  Explore Outerwear
+                </button>
+                <button onclick="navigateTo('custom')" class="px-7 py-3.5 rounded-lg border border-gold/70 text-gold hover:bg-gold hover:text-forest-dark text-xs font-semibold uppercase tracking-[0.16em] transition-all">
+                  Custom Jacket Studio
+                </button>
+              </div>
+
+              <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 max-w-lg">
+                <div>
+                  <p class="font-editorial text-xl sm:text-2xl text-white">Full-Grain</p>
+                  <p class="text-[11px] text-white/60 mt-0.5">Select Cowhide &amp; Lambskin</p>
+                </div>
+                <div>
+                  <p class="font-editorial text-xl sm:text-2xl text-white">XS – XXL+</p>
+                  <p class="text-[11px] text-white/60 mt-0.5">Standard &amp; Custom Sizing</p>
+                </div>
+                <div>
+                  <p class="font-editorial text-xl sm:text-2xl text-white">Worldwide</p>
+                  <p class="text-[11px] text-white/60 mt-0.5">Tracked Express Courier</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Editorial Jacket Showcase Card -->
+            <div class="lg:col-span-5">
+              <div class="relative rounded-2xl border border-gold/30 bg-gradient-to-b from-forest-secondary/70 to-forest-dark/95 p-6 sm:p-8 shadow-2xl">
+                <div class="flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-white/70 mb-4">
+                  <span>Featured Atelier Piece</span>
+                  <span class="text-gold">No. 01 / Demo</span>
+                </div>
+                <div id="hero-jacket-visual" class="w-full h-72 sm:h-80 flex items-center justify-center"></div>
+                <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+                  <div>
+                    <h3 class="font-editorial text-xl text-white">Highland Forest Varsity</h3>
+                    <p class="text-xs text-white/65">Melton Wool &amp; Cream Full-Grain Sleeves</p>
+                  </div>
+                  <button onclick="openProductById('ej-03')" class="px-4 py-2 rounded-lg bg-gold/15 border border-gold/50 text-gold hover:bg-gold hover:text-forest-dark text-[11px] font-medium uppercase tracking-wider transition-all whitespace-nowrap">
+                    View Piece
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-Card Collection Strip -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-16">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Curated Categories</p>
+            <h2 class="font-editorial text-3xl sm:text-4xl font-medium text-ink mt-1">Explore the Collections</h2>
+          </div>
+          <button onclick="openCollection('All')" class="text-xs font-medium uppercase tracking-[0.14em] text-forest hover:text-gold transition-colors self-start sm:self-auto">
+            View Full Catalog →
+          </button>
+        </div>
+
+        <div id="home-collection-strip" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+      </div>
+
+      <!-- Best Sellers & New Arrivals Grid -->
+      <div class="bg-offwhite border-y border-hairline py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Demo Catalog Preview</p>
+              <h2 class="font-editorial text-3xl sm:text-4xl font-medium text-ink mt-1">Best Sellers &amp; New Arrivals</h2>
+            </div>
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar">
+              <button onclick="filterHomeShowcase('all')" data-home-tab="all" class="home-tab px-4 py-2 rounded-lg text-xs font-medium uppercase tracking-wider transition-all bg-forest text-white">All Pieces</button>
+              <button onclick="filterHomeShowcase('bestseller')" data-home-tab="bestseller" class="home-tab px-4 py-2 rounded-lg text-xs font-medium uppercase tracking-wider transition-all bg-white border border-hairline text-ink hover:border-forest">Best Sellers</button>
+              <button onclick="filterHomeShowcase('new')" data-home-tab="new" class="home-tab px-4 py-2 rounded-lg text-xs font-medium uppercase tracking-wider transition-all bg-white border border-hairline text-ink hover:border-forest">New Arrivals</button>
+              <button onclick="filterHomeShowcase('custom')" data-home-tab="custom" class="home-tab px-4 py-2 rounded-lg text-xs font-medium uppercase tracking-wider transition-all bg-white border border-hairline text-ink hover:border-forest">Made-to-Order</button>
+            </div>
+          </div>
+
+          <div id="home-product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+      </div>
+
+      <!-- Custom Jacket Studio Spotlight Banner -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+        <div class="rounded-2xl overflow-hidden bg-forest-dark text-white grid grid-cols-1 lg:grid-cols-12 border border-forest">
+          <div class="lg:col-span-7 p-8 sm:p-12 lg:p-14 flex flex-col justify-center">
+            <span class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Bespoke Commission</span>
+            <h2 class="font-editorial text-3xl sm:text-4xl lg:text-5xl font-medium mt-2 leading-tight">
+              Custom Jacket Studio:<br />Built to Your Exact Specifications.
+            </h2>
+            <p class="text-sm text-white/75 mt-4 max-w-xl leading-relaxed">
+              Beyond our ready-made stock, EAGLES JACKETS offers individual made-to-order tailoring. Choose your silhouette, leather hide or wool blend, sleeve contrast, fit profile, and personalized monogramming—crafted over 14–21 business days.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-7">
+              <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <p class="text-xs font-semibold uppercase tracking-wider text-gold">Ready-Made Stock</p>
+                <p class="text-xs text-white/70 mt-1">Dispatched within 2–3 business days. Eligible for standard size exchanges.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                <p class="text-xs font-semibold uppercase tracking-wider text-gold">Custom Made-to-Order</p>
+                <p class="text-xs text-white/70 mt-1">14–21 business days atelier production with full Shopify Line Item Properties.</p>
+              </div>
+            </div>
+            <div class="mt-8">
+              <button onclick="navigateTo('custom')" class="px-7 py-3.5 rounded-lg bg-gold text-forest-dark hover:bg-gold-light text-xs font-semibold uppercase tracking-[0.16em] transition-all">
+                Launch Custom Jacket Studio →
+              </button>
+            </div>
+          </div>
+          <div class="lg:col-span-5 bg-gradient-to-br from-forest-secondary to-forest-dark p-8 flex flex-col items-center justify-center border-t lg:border-t-0 lg:border-l border-white/10">
+            <div id="spotlight-custom-svg" class="w-full max-w-[260px] h-64 flex items-center justify-center"></div>
+            <p class="text-[11px] uppercase tracking-[0.18em] text-gold/90 mt-3">Live Monogram &amp; Material Preview</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand Story & Craftsmanship Split Section -->
+      <div id="craftsmanship-section" class="border-t border-hairline bg-white py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div class="lg:col-span-5">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">The Eagles Standard</p>
+              <h2 class="font-editorial text-3xl sm:text-4xl font-medium text-ink mt-2 leading-tight">
+                Craftsmanship Without Compromise.
+              </h2>
+              <p class="text-sm text-ink-muted mt-4 leading-relaxed">
+                Every EAGLES JACKETS garment is engineered around longevity—balancing structured shoulder geometry, breathable satin-twill linings, and tactile materials that develop character with every season worn.
+              </p>
+              <div class="mt-6 pt-6 border-t border-hairline flex items-center gap-6">
+                <div>
+                  <span class="font-editorial text-3xl text-forest font-semibold">1.2mm</span>
+                  <p class="text-[11px] text-ink-muted uppercase tracking-wider mt-0.5">Select Hide Gauge</p>
+                </div>
+                <div class="w-px h-10 bg-hairline"></div>
+                <div>
+                  <span class="font-editorial text-3xl text-forest font-semibold">24oz</span>
+                  <p class="text-[11px] text-ink-muted uppercase tracking-wider mt-0.5">Melton Wool Body</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="p-6 rounded-xl border border-hairline bg-offwhite">
+                <span class="text-gold font-editorial text-2xl font-semibold">01</span>
+                <h3 class="font-editorial text-xl font-semibold text-ink mt-2">Full-Grain Leather</h3>
+                <p class="text-xs text-ink-muted mt-2 leading-relaxed">Drum-dyed aniline cowhide and supple lambskin selected for natural grain integrity and aging patina.</p>
+              </div>
+              <div class="p-6 rounded-xl border border-hairline bg-offwhite">
+                <span class="text-gold font-editorial text-2xl font-semibold">02</span>
+                <h3 class="font-editorial text-xl font-semibold text-ink mt-2">Heavy Melton Wool</h3>
+                <p class="text-xs text-ink-muted mt-2 leading-relaxed">Dense virgin wool blends on varsity silhouettes providing structured drape and crisp thermal insulation.</p>
+              </div>
+              <div class="p-6 rounded-xl border border-hairline bg-offwhite">
+                <span class="text-gold font-editorial text-2xl font-semibold">03</span>
+                <h3 class="font-editorial text-xl font-semibold text-ink mt-2">Precision Hardware</h3>
+                <p class="text-xs text-ink-muted mt-2 leading-relaxed">Heavy-gauge brushed brass and gunmetal zippers, reinforced snaps, and double-needle seam stitching.</p>
+              </div>
+              <div class="p-6 rounded-xl border border-hairline bg-offwhite">
+                <span class="text-gold font-editorial text-2xl font-semibold">04</span>
+                <h3 class="font-editorial text-xl font-semibold text-ink mt-2">Tailored Fit Architecture</h3>
+                <p class="text-xs text-ink-muted mt-2 leading-relaxed">Graded across XS to XXL plus bespoke chest, shoulder, and sleeve adjustments through Custom Studio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits & Trust Icons Row -->
+      <div class="border-y border-hairline bg-offwhite py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-forest text-gold flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918"/></svg>
+            </div>
+            <div>
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-ink">Worldwide Express</h4>
+              <p class="text-xs text-ink-muted mt-1 leading-relaxed">Tracked courier delivery to the USA, UK, Canada, and international markets.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-forest text-gold flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
+            </div>
+            <div>
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-ink">Made-to-Order Tailoring</h4>
+              <p class="text-xs text-ink-muted mt-1 leading-relaxed">Custom sizing, material selection, and personal monogramming on request.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-forest text-gold flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+            </div>
+            <div>
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-ink">Secure Shopify Checkout</h4>
+              <p class="text-xs text-ink-muted mt-1 leading-relaxed">Encrypted PCI-compliant checkout with verified payment gateways.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-forest text-gold flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"/></svg>
+            </div>
+            <div>
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-ink">Transparent Policies</h4>
+              <p class="text-xs text-ink-muted mt-1 leading-relaxed">Clear 30-day ready-made return terms and transparent custom lead times.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verified Customer Reviews Placeholder (No Fabricated Reviews) -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div class="rounded-2xl border border-dashed border-forest/30 bg-offwhite/70 p-8 sm:p-10 text-center">
+          <span class="inline-block px-3 py-1 rounded-full bg-forest/10 text-forest text-[10px] font-semibold uppercase tracking-[0.18em]">
+            Shopify App Block Slot
+          </span>
+          <h3 class="font-editorial text-2xl sm:text-3xl font-medium text-ink mt-3">
+            Customer Reviews Section (Ready for Shopify / Judge.me Integration)
+          </h3>
+          <p class="text-xs sm:text-sm text-ink-muted max-w-xl mx-auto mt-2 leading-relaxed">
+            In compliance with brand integrity standards, no fabricated customer testimonials are displayed in this preview. Once live orders ship, verified buyer reviews and fit ratings render automatically here via Judge.me or Shopify Product Reviews.
+          </p>
+        </div>
+      </div>
+
+      <!-- Newsletter Section -->
+      <div class="bg-forest text-white py-14 sm:py-16">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">Private Client List</p>
+          <h2 class="font-editorial text-3xl sm:text-4xl font-medium mt-2">Receive Limited Atelier Releases</h2>
+          <p class="text-xs sm:text-sm text-white/75 mt-2">
+            Early access to small-batch leather drops, seasonal lookbooks, and custom studio windows.
+          </p>
+          <form onsubmit="handleNewsletterSubmit(event)" class="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input id="newsletter-email" type="email" required placeholder="Enter your email address" class="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/50 text-sm focus:outline-none focus:border-gold" />
+            <button type="submit" class="px-6 py-3 rounded-lg bg-gold text-forest-dark hover:bg-gold-light text-xs font-semibold uppercase tracking-[0.15em] transition-colors">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 2: COLLECTION PAGE + WORKING FILTERS                           -->
+    <!-- =================================================================== -->
+    <section id="view-collection" class="view-section hidden">
+      <!-- Collection Banner -->
+      <div class="bg-forest-dark text-white border-b border-forest">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <p class="text-[11px] uppercase tracking-[0.18em] text-gold">Shopify Collection Template</p>
+              <h1 id="collection-title" class="font-editorial text-3xl sm:text-5xl font-medium mt-1">All Outerwear</h1>
+              <p id="collection-desc" class="text-xs sm:text-sm text-white/70 mt-2 max-w-xl">
+                Explore ready-made and made-to-order jackets engineered from full-grain leather, Melton wool, and structured heavyweight cotton.
+              </p>
+            </div>
+            <div class="text-xs text-white/70">
+              Showing <span id="collection-count" class="text-gold font-semibold">10</span> demo pieces
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <!-- Mobile Filter Trigger + Sort Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b border-hairline">
+          <div class="flex items-center gap-3">
+            <button onclick="openMobileFilterDrawer()" class="lg:hidden inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-hairline text-xs font-medium uppercase tracking-wider hover:border-forest">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg>
+              Filters
+            </button>
+            <div id="active-filter-pills" class="flex flex-wrap items-center gap-2"></div>
+          </div>
+
+          <div class="flex items-center gap-2.5 ml-auto">
+            <label for="collection-sort" class="text-xs text-ink-muted uppercase tracking-wider">Sort:</label>
+            <select id="collection-sort" onchange="applyCollectionFilters()" class="px-3 py-2 rounded-lg border border-hairline text-xs font-medium text-ink bg-white focus:outline-none focus:border-forest">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Desktop Sidebar Filters -->
+          <aside class="hidden lg:block lg:col-span-3 space-y-6">
+            <div id="desktop-filter-container"></div>
+          </aside>
+
+          <!-- Product Grid -->
+          <div class="lg:col-span-9">
+            <div id="collection-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+            <div id="collection-empty" class="hidden py-16 text-center rounded-2xl border border-hairline bg-offwhite">
+              <p class="font-editorial text-2xl text-ink">No jackets match your selected filters.</p>
+              <p class="text-xs text-ink-muted mt-1">Try broadening your size, color, or price range.</p>
+              <button onclick="clearAllFilters()" class="mt-4 px-5 py-2.5 rounded-lg bg-forest text-white text-xs font-medium uppercase tracking-wider">Reset All Filters</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 3: PRODUCT DETAIL PAGE (PDP)                                   -->
+    <!-- =================================================================== -->
+    <section id="view-pdp" class="view-section hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-ink-muted mb-6">
+          <button onclick="navigateTo('home')" class="hover:text-forest">Home</button>
+          <span>/</span>
+          <button id="pdp-breadcrumb-cat" onclick="openCollection('All')" class="hover:text-forest">Outerwear</button>
+          <span>/</span>
+          <span id="pdp-breadcrumb-title" class="text-ink font-medium truncate">Product</span>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+          <!-- Left: Multi-Thumbnail Studio Gallery -->
+          <div class="lg:col-span-7 space-y-4">
+            <div onclick="openZoomLightbox()" class="relative group cursor-zoom-in rounded-2xl border border-hairline studio-card-bg aspect-[4/4.3] flex items-center justify-center p-8 overflow-hidden">
+              <div id="pdp-main-visual" class="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03]"></div>
+              <span id="pdp-angle-label" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 border border-hairline text-[10px] font-medium uppercase tracking-widest text-ink">Front Studio View</span>
+              <span class="absolute bottom-4 right-4 px-3 py-1.5 rounded-lg bg-forest-dark/85 text-white text-[10px] uppercase tracking-wider flex items-center gap-1.5 opacity-90 group-hover:opacity-100">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"/></svg>
+                Click to Zoom
+              </span>
+            </div>
+
+            <!-- 4 Thumbnails -->
+            <div id="pdp-thumbnails" class="grid grid-cols-4 gap-3"></div>
+          </div>
+
+          <!-- Right: Product Details & Variant Controls -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span id="pdp-material-badge" class="inline-block px-2.5 py-1 rounded-md bg-offwhite border border-hairline text-[10px] font-semibold uppercase tracking-[0.16em] text-forest">Full-Grain Cowhide</span>
+                <span id="pdp-availability" class="inline-flex items-center gap-1.5 text-xs font-medium text-forest">
+                  <span class="w-2 h-2 rounded-full bg-emerald-600"></span> In Stock — Ready to Ship
+                </span>
+              </div>
+
+              <h1 id="pdp-title" class="font-editorial text-3xl sm:text-4xl font-medium text-ink mt-3 leading-tight">Sovereign Moto Biker Jacket</h1>
+
+              <div class="flex items-baseline gap-3 mt-3">
+                <span id="pdp-price" class="text-2xl font-semibold text-forest">$345</span>
+                <span id="pdp-compare-price" class="text-base text-ink-muted line-through">$420</span>
+                <span id="pdp-save-badge" class="px-2 py-0.5 rounded bg-gold/15 text-forest-dark text-[11px] font-semibold">Demo Price</span>
+              </div>
+
+              <p class="text-[11px] text-ink-muted uppercase tracking-wider mt-2">
+                SKU: <span id="pdp-sku" class="text-ink font-medium font-mono">EJ-MLJ-01-OBS-M</span>
+              </p>
+            </div>
+
+            <p id="pdp-short-desc" class="text-sm text-ink-muted leading-relaxed border-t border-hairline pt-4"></p>
+
+            <!-- Color Swatches -->
+            <div>
+              <div class="flex items-center justify-between text-xs mb-2.5">
+                <span class="uppercase tracking-wider font-semibold text-ink">Color: <span id="pdp-selected-color-name" class="font-normal text-ink-muted">Obsidian Black</span></span>
+              </div>
+              <div id="pdp-color-swatches" class="flex flex-wrap items-center gap-2.5"></div>
+            </div>
+
+            <!-- Size Selector -->
+            <div>
+              <div class="flex items-center justify-between text-xs mb-2.5">
+                <span class="uppercase tracking-wider font-semibold text-ink">Size: <span id="pdp-selected-size-label" class="font-normal text-ink-muted">M</span></span>
+                <button onclick="openSizeGuideModal()" class="text-forest underline underline-offset-4 hover:text-gold font-medium flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"/></svg>
+                  Size Guide
+                </button>
+              </div>
+              <div id="pdp-size-grid" class="grid grid-cols-4 sm:grid-cols-7 gap-2"></div>
+              <div id="pdp-custom-size-note" class="hidden mt-3 p-3.5 rounded-xl bg-offwhite border border-gold/50 text-xs text-ink leading-relaxed">
+                <strong class="text-forest">Custom Sizing Selected (+14–21 business days):</strong> Our atelier will confirm chest, shoulder, sleeve, and jacket length measurements after order placement, or you can configure full bespoke specs in the
+                <button onclick="navigateTo('custom')" class="underline text-forest font-semibold">Custom Jacket Studio</button>.
+              </div>
+            </div>
+
+            <!-- Quantity & Primary Actions -->
+            <div class="space-y-3 pt-2">
+              <div class="flex items-center gap-3">
+                <div class="flex items-center border border-hairline rounded-lg h-12">
+                  <button onclick="adjustPdpQty(-1)" class="px-3.5 h-full text-ink hover:bg-offwhite rounded-l-lg">−</button>
+                  <span id="pdp-qty" class="w-10 text-center text-sm font-medium">1</span>
+                  <button onclick="adjustPdpQty(1)" class="px-3.5 h-full text-ink hover:bg-offwhite rounded-r-lg">+</button>
+                </div>
+                <button onclick="addPdpToCart()" class="flex-1 h-12 rounded-lg bg-forest hover:bg-forest-dark text-white text-xs font-semibold uppercase tracking-[0.16em] transition-colors shadow-sm">
+                  Add to Cart
+                </button>
+                <button id="pdp-wishlist-btn" onclick="toggleWishlistCurrentPdp()" aria-label="Save to Wishlist" class="w-12 h-12 rounded-lg border border-hairline hover:border-forest flex items-center justify-center transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+                </button>
+              </div>
+
+              <button onclick="buyNowDemo()" class="w-full h-11 rounded-lg border border-forest text-forest hover:bg-forest/5 text-xs font-semibold uppercase tracking-[0.16em] transition-colors">
+                Buy Now — Express Checkout (Demo)
+              </button>
+            </div>
+
+            <!-- Accordion Tabs -->
+            <div class="border-t border-hairline divide-y divide-hairline pt-2">
+              <div class="py-3.5">
+                <button onclick="toggleAccordion('acc-specs')" class="w-full flex items-center justify-between text-xs font-semibold uppercase tracking-[0.14em] text-ink">
+                  <span>Description &amp; Specifications</span>
+                  <span id="icon-acc-specs" class="text-base leading-none">−</span>
+                </button>
+                <div id="acc-specs" class="mt-3 text-xs text-ink-muted space-y-2 leading-relaxed">
+                  <p id="pdp-full-specs"></p>
+                  <ul class="list-disc pl-4 space-y-1">
+                    <li>Lining: Breathable satin-twill with dual interior welt pockets</li>
+                    <li>Hardware: Heavy-duty YKK brushed metal zipper closures</li>
+                    <li>Origin &amp; HS Code: Populated per verified manufacturing batch</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="py-3.5">
+                <button onclick="toggleAccordion('acc-shipping')" class="w-full flex items-center justify-between text-xs font-semibold uppercase tracking-[0.14em] text-ink">
+                  <span>Shipping &amp; International Duties</span>
+                  <span id="icon-acc-shipping" class="text-base leading-none">+</span>
+                </button>
+                <div id="acc-shipping" class="hidden mt-3 text-xs text-ink-muted space-y-1.5 leading-relaxed">
+                  <p><strong>Ready-Made Orders:</strong> Dispatched in 2–3 business days. Express delivery to USA, UK, and Canada typically arrives within 5–10 business days.</p>
+                  <p><strong>Custom Orders:</strong> 14–21 business days production plus express air transit.</p>
+                  <p><strong>Customs &amp; VAT:</strong> International duties or local VAT/GST are displayed transparently at Shopify Checkout based on destination market.</p>
+                </div>
+              </div>
+
+              <div class="py-3.5">
+                <button onclick="toggleAccordion('acc-returns')" class="w-full flex items-center justify-between text-xs font-semibold uppercase tracking-[0.14em] text-ink">
+                  <span>Returns &amp; Garment Care</span>
+                  <span id="icon-acc-returns" class="text-base leading-none">+</span>
+                </button>
+                <div id="acc-returns" class="hidden mt-3 text-xs text-ink-muted space-y-1.5 leading-relaxed">
+                  <p>Ready-made unworn jackets with original tags may be returned or exchanged within 30 days of delivery. Personalized or custom-sized jackets are final sale unless defective.</p>
+                  <p>Store on a broad-shouldered wooden hanger away from direct heat; condition full-grain leather annually with neutral balm.</p>
+                </div>
+              </div>
+
+              <div class="py-3.5">
+                <button onclick="toggleAccordion('acc-faq')" class="w-full flex items-center justify-between text-xs font-semibold uppercase tracking-[0.14em] text-ink">
+                  <span>Product FAQs</span>
+                  <span id="icon-acc-faq" class="text-base leading-none">+</span>
+                </button>
+                <div id="acc-faq" class="hidden mt-3 text-xs text-ink-muted space-y-2 leading-relaxed">
+                  <p><strong>How does the fit run?</strong> True to tailored international sizing. If layering heavy knitwear underneath, size up one size.</p>
+                  <p><strong>Can I request custom sleeve length?</strong> Yes—select "Custom" above or visit our Custom Jacket Studio.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="mt-16 pt-12 border-t border-hairline">
+          <div class="flex items-end justify-between mb-8">
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">Complete the Wardrobe</p>
+              <h2 class="font-editorial text-3xl font-medium text-ink mt-1">Related Outerwear</h2>
+            </div>
+            <button onclick="openCollection('All')" class="text-xs font-medium uppercase tracking-wider text-forest hover:text-gold">Shop All →</button>
+          </div>
+          <div id="pdp-related-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 4: CUSTOM JACKET STUDIO (SHOPIFY LINE ITEM PROPERTIES)         -->
+    <!-- =================================================================== -->
+    <section id="view-custom" class="view-section hidden">
+      <div class="bg-forest-dark text-white border-b border-forest">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span class="inline-block px-2.5 py-0.5 rounded bg-gold/15 border border-gold/40 text-gold text-[10px] font-semibold uppercase tracking-[0.18em]">
+                Shopify Line Item Properties Configurator
+              </span>
+              <h1 class="font-editorial text-3xl sm:text-5xl font-medium mt-2">Custom Jacket Studio</h1>
+              <p class="text-xs sm:text-sm text-white/75 mt-2 max-w-2xl">
+                Design a bespoke EAGLES JACKETS piece. Every selection below attaches cleanly as structured Shopify Line Item Properties inside your cart and order manifest.
+              </p>
+            </div>
+            <div class="px-4 py-3 rounded-xl bg-white/5 border border-gold/40 text-xs">
+              <p class="text-gold font-semibold uppercase tracking-wider text-[10px]">Production Lead Time</p>
+              <p class="text-white mt-0.5 font-medium">Bespoke production: 14–21 business days</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <!-- Left Sticky Live Studio Preview -->
+          <div class="lg:col-span-5">
+            <div class="lg:sticky lg:top-32 space-y-4">
+              <div class="rounded-2xl border border-hairline studio-card-bg p-6 sm:p-8 flex flex-col items-center">
+                <div class="w-full flex items-center justify-between text-[10px] uppercase tracking-[0.16em] text-ink-muted mb-2">
+                  <span id="studio-preview-badge">Varsity • Full-Grain</span>
+                  <span class="text-forest font-semibold">Live Spec Preview</span>
+                </div>
+                <div id="custom-studio-svg" class="w-full h-72 sm:h-80 flex items-center justify-center"></div>
+                <div class="w-full mt-4 pt-4 border-t border-hairline flex items-center justify-between">
+                  <div>
+                    <p class="text-[11px] uppercase tracking-wider text-ink-muted">Estimated Commission</p>
+                    <p id="custom-total-price" class="font-editorial text-3xl font-semibold text-forest">$395</p>
+                  </div>
+                  <div class="text-right text-[11px] text-ink-muted">
+                    <p>Lead Time: <strong class="text-ink">14–21 days</strong></p>
+                    <p id="custom-summary-fit">Fit: Regular • Size: M</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live Line Item Properties Preview Box -->
+              <div class="rounded-xl border border-hairline bg-offwhite p-4">
+                <p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-forest mb-2">Shopify Line Item Properties Payload</p>
+                <div id="custom-payload-preview" class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[11px] text-ink-muted"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Configurator Form -->
+          <div class="lg:col-span-7 space-y-6">
+            <!-- Step 1: Silhouette -->
+            <div class="p-6 rounded-2xl border border-hairline bg-white">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-forest mb-4">1. Jacket Silhouette</h3>
+              <div class="grid grid-cols-3 gap-3" id="studio-style-options">
+                <button type="button" onclick="updateCustom('style', 'varsity')" data-c-style="varsity" class="c-opt-btn p-3.5 rounded-xl border text-left transition-all">
+                  <p class="font-editorial text-lg font-semibold">Varsity</p>
+                  <p class="text-[11px] text-ink-muted">Ribbed collar &amp; snap front</p>
+                </button>
+                <button type="button" onclick="updateCustom('style', 'biker')" data-c-style="biker" class="c-opt-btn p-3.5 rounded-xl border text-left transition-all">
+                  <p class="font-editorial text-lg font-semibold">Moto Biker</p>
+                  <p class="text-[11px] text-ink-muted">Asymmetric zip &amp; lapel</p>
+                </button>
+                <button type="button" onclick="updateCustom('style', 'bomber')" data-c-style="bomber" class="c-opt-btn p-3.5 rounded-xl border text-left transition-all">
+                  <p class="font-editorial text-lg font-semibold">Flight Bomber</p>
+                  <p class="text-[11px] text-ink-muted">Clean zip &amp; rib waist</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Material -->
+            <div class="p-6 rounded-2xl border border-hairline bg-white">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-forest mb-4">2. Material &amp; Hide Grade</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <button type="button" onclick="updateCustom('material', 'Full-Grain Cowhide', 45)" data-c-mat="Full-Grain Cowhide" class="c-mat-btn p-3.5 rounded-xl border text-left transition-all">
+                  <p class="text-xs font-semibold text-ink">Full-Grain Cowhide</p>
+                  <p class="text-[11px] text-ink-muted mt-0.5">Heavy 1.2mm • +$45</p>
+                </button>
+                <button type="button" onclick="updateCustom('material', 'Supple Lambskin', 65)" data-c-mat="Supple Lambskin" class="c-mat-btn p-3.5 rounded-xl border text-left transition-all">
+                  <p class="text-xs font-semibold text-ink">Supple Lambskin</p>
+                  <p class="text-[11px] text-ink-muted mt-0.5">Soft luxury drape • +$65</p>
+                </button>
+                <button type="button" onclick="updateCustom('material', 'Melton Wool & Leather', 0)" data-c-mat="Melton Wool & Leather" class="c-mat-btn p-3.5 rounded-xl border text-left transition-all">
+                  <p class="text-xs font-semibold text-ink">Melton Wool &amp; Leather</p>
+                  <p class="text-[11px] text-ink-muted mt-0.5">24oz wool body • Base</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Base Color & Sleeve Style -->
+            <div class="p-6 rounded-2xl border border-hairline bg-white grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-forest mb-3">3. Base Colorway</h3>
+                <div class="flex flex-wrap gap-2.5" id="studio-color-swatches"></div>
+                <p id="studio-color-name" class="text-xs text-ink-muted mt-2">Forest Green (#123D2B)</p>
+              </div>
+              <div>
+                <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-forest mb-3">4. Sleeve Style</h3>
+                <select id="studio-sleeve-select" onchange="updateCustom('sleeve', this.value)" class="w-full px-3.5 py-2.5 rounded-lg border border-hairline text-xs font-medium text-ink focus:outline-none focus:border-forest">
+                  <option value="Contrast Cream Leather">Contrast Cream Leather</option>
+                  <option value="Matching Tone-on-Tone">Matching Tone-on-Tone</option>
+                  <option value="Quilted Shoulder Panels">Quilted Shoulder Panels</option>
+                  <option value="Rib-Knit Heritage Cuff">Rib-Knit Heritage Cuff</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Step 4: Size & Fit -->
+            <div class="p-6 rounded-2xl border border-hairline bg-white grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-forest">5. Size</h3>
+                  <button type="button" onclick="openSizeGuideModal()" class="text-[11px] text-forest underline">Size Guide</button>
+                </div>
+                <select id="studio-size-select" onchange="updateCustom('size', this.value)" class="w-full px-3.5 py-2.5 rounded-lg border border-hairline text-xs font-medium text-ink focus:outline-none focus:border-forest">
+                  <option value="XS">XS</option>
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="XXL">XXL</option>
+                  <option value="Custom Measurements">Custom Made-to-Measure</option>
+                </select>
+              </div>
+              <div>
+                <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-forest mb-3">6. Fit Profile</h3>
+                <div class="grid grid-cols-3 gap-2">
+                  <button type="button" onclick="updateCustom('fit', 'Slim')" data-c-fit="Slim" class="c-fit-btn py-2.5 rounded-lg border text-xs font-medium transition-all">Slim</button>
+                  <button type="button" onclick="updateCustom('fit', 'Regular')" data-c-fit="Regular" class="c-fit-btn py-2.5 rounded-lg border text-xs font-medium transition-all">Regular</button>
+                  <button type="button" onclick="updateCustom('fit', 'Relaxed')" data-c-fit="Relaxed" class="c-fit-btn py-2.5 rounded-lg border text-xs font-medium transition-all">Relaxed</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5: Personalization & Embroidery -->
+            <div class="p-6 rounded-2xl border border-hairline bg-white space-y-4">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-forest">7. Personalization &amp; Embroidery</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="studio-monogram" class="block text-xs font-medium text-ink mb-1.5">Initials / Monogram (Max 4 chars — Live Preview)</label>
+                  <input id="studio-monogram" type="text" maxlength="4" value="EJ" oninput="updateCustom('monogram', this.value.toUpperCase())" placeholder="e.g. A.K." class="w-full px-3.5 py-2.5 rounded-lg border border-hairline text-sm uppercase tracking-widest font-semibold focus:outline-none focus:border-forest" />
+                </div>
+                <div>
+                  <label for="studio-patch" class="block text-xs font-medium text-ink mb-1.5">Patch / Embroidery Option</label>
+                  <select id="studio-patch" onchange="updateCustom('patch', this.value)" class="w-full px-3.5 py-2.5 rounded-lg border border-hairline text-xs font-medium text-ink focus:outline-none focus:border-forest">
+                    <option value="Tonal Chest Monogram (+$20)">Tonal Chest Monogram (+$20)</option>
+                    <option value="Inside Lining Embroidered Label (+$15)">Inside Lining Embroidered Label (+$15)</option>
+                    <option value="Heritage Chenille Sleeve Patch (+$30)">Heritage Chenille Sleeve Patch (+$30)</option>
+                    <option value="None (Clean Minimalist)">None (Clean Minimalist)</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="studio-notes" class="block text-xs font-medium text-ink mb-1.5">Tailor Notes / Custom Measurements (Optional)</label>
+                <textarea id="studio-notes" rows="2" oninput="updateCustom('notes', this.value)" placeholder="e.g., Chest 41 in, sleeve 25.5 in, brushed gold zippers preferred..." class="w-full px-3.5 py-2.5 rounded-lg border border-hairline text-xs focus:outline-none focus:border-forest"></textarea>
+              </div>
+            </div>
+
+            <!-- Add Configured Item to Cart -->
+            <div class="p-5 rounded-2xl bg-offwhite border border-hairline flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="text-xs text-ink-muted">
+                <p class="font-semibold text-ink">Bespoke Commission Policy</p>
+                <p class="mt-0.5">Production takes 14–21 business days. Final approval sent via email prior to cutting.</p>
+              </div>
+              <button onclick="addCustomJacketToCart()" class="w-full sm:w-auto px-7 py-3.5 rounded-lg bg-forest hover:bg-forest-dark text-white text-xs font-semibold uppercase tracking-[0.16em] transition-colors whitespace-nowrap shadow-sm">
+                Add Custom Jacket to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MULTI-COLUMN LUXURY FOOTER (#0B281D)                                  -->
+  <!-- ===================================================================== -->
+  <footer class="bg-forest-dark text-white border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+        <!-- Brand Column -->
+        <div class="lg:col-span-4 space-y-4">
+          <div>
+            <span class="font-editorial text-2xl font-semibold tracking-[0.26em] text-white">EAGLES JACKETS</span>
+            <div class="mt-1.5 w-12 h-[2px] bg-gold"></div>
+          </div>
+          <p class="text-xs text-white/70 leading-relaxed max-w-xs">
+            Contemporary international outerwear crafted in full-grain leather and heavyweight Melton wool. Ready-made silhouettes and bespoke made-to-order commissions.
+          </p>
+          <p class="text-[11px] text-gold/90 uppercase tracking-wider">Theme Preview — Demo Catalog Only</p>
+        </div>
+
+        <!-- Shop Links -->
+        <div class="lg:col-span-2">
+          <h4 class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold mb-4">Collections</h4>
+          <ul class="space-y-2.5 text-xs text-white/75">
+            <li><button onclick="openCollection('Men\'s Leather')" class="hover:text-white transition-colors">Men's Leather</button></li>
+            <li><button onclick="openCollection('Women\'s Jackets')" class="hover:text-white transition-colors">Women's Outerwear</button></li>
+            <li><button onclick="openCollection('Varsity')" class="hover:text-white transition-colors">Varsity Heritage</button></li>
+            <li><button onclick="openCollection('Bomber')" class="hover:text-white transition-colors">Bomber Series</button></li>
+            <li><button onclick="navigateTo('custom')" class="hover:text-white transition-colors">Custom Jacket Studio</button></li>
+          </ul>
+        </div>
+
+        <!-- Client Service -->
+        <div class="lg:col-span-3">
+          <h4 class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold mb-4">Client Service</h4>
+          <ul class="space-y-2.5 text-xs text-white/75">
+            <li><button onclick="openSizeGuideModal()" class="hover:text-white transition-colors">Size &amp; Fit Guide</button></li>
+            <li><button onclick="showToast('Shipping Policy page connects in Shopify Phase 5.')" class="hover:text-white transition-colors">International Shipping &amp; Duties</button></li>
+            <li><button onclick="showToast('Returns & Custom Order Policy connects in Shopify Phase 5.')" class="hover:text-white transition-colors">Returns &amp; Bespoke Policy</button></li>
+            <li><button onclick="showToast('Order Tracking page connects via Shopify native status page.')" class="hover:text-white transition-colors">Track Your Order</button></li>
+            <li><button onclick="showToast('Contact page & support workflows connect in Phase 5.')" class="hover:text-white transition-colors">Contact Atelier Support</button></li>
+          </ul>
+        </div>
+
+        <!-- Shopify Markets Currency Switcher -->
+        <div class="lg:col-span-3 space-y-4">
+          <h4 class="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">Shopify Markets Preview</h4>
+          <p class="text-xs text-white/70 leading-relaxed">
+            Switch market currency to preview localized pricing across USA, UK, and Canada.
+          </p>
+          <div>
+            <label for="footer-currency" class="sr-only">Select Market Currency</label>
+            <select id="footer-currency" onchange="setCurrency(this.value)" class="w-full px-3.5 py-2.5 rounded-lg bg-forest border border-white/20 text-xs text-white focus:outline-none focus:border-gold cursor-pointer">
+              <option value="USD">United States — USD ($)</option>
+              <option value="GBP">United Kingdom — GBP (£)</option>
+              <option value="CAD">Canada — CAD (CA$)</option>
+            </select>
+          </div>
+          <p class="text-[10px] text-white/50">Preview exchange rates are illustrative; live Shopify Markets uses real-time FX.</p>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/55">
+        <p>© <span id="footer-year"></span> EAGLES JACKETS. Built for Shopify Online Store 2.0.</p>
+        <div class="flex items-center gap-4">
+          <span>Privacy Policy</span>
+          <span>Terms of Service</span>
+          <span>Accessibility</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- OVERLAYS, DRAWERS & MODALS                                            -->
+  <!-- ===================================================================== -->
+
+  <!-- Shared Backdrop -->
+  <div id="drawer-backdrop" onclick="closeAllDrawers()" class="hidden fixed inset-0 bg-forest-dark/55 backdrop-blur-[2px] z-50 transition-opacity"></div>
+
+  <!-- 1. AJAX SLIDE-OUT CART DRAWER -->
+  <aside id="cart-drawer" class="drawer-panel fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl translate-x-full flex flex-col">
+    <div class="px-6 py-4 border-b border-hairline flex items-center justify-between">
+      <div>
+        <h2 class="font-editorial text-2xl font-medium text-ink">Shopping Bag</h2>
+        <p class="text-[11px] text-ink-muted">Shopify AJAX Cart Preview</p>
+      </div>
+      <button onclick="closeAllDrawers()" aria-label="Close cart" class="p-2 text-ink-muted hover:text-ink rounded-lg">✕</button>
+    </div>
+
+    <!-- Free Shipping Progress Bar -->
+    <div class="px-6 py-3 bg-offwhite border-b border-hairline">
+      <p id="cart-shipping-msg" class="text-xs text-ink font-medium"></p>
+      <div class="w-full h-1.5 bg-hairline rounded-full overflow-hidden mt-2">
+        <div id="cart-shipping-bar" class="h-full bg-forest transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items List -->
+    <div id="cart-items-container" class="flex-1 overflow-y-auto px-6 py-4 space-y-4"></div>
+
+    <!-- Cart Footer -->
+    <div class="p-6 border-t border-hairline bg-offwhite space-y-3">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-ink-muted">Estimated Subtotal</span>
+        <span id="cart-subtotal" class="text-lg font-semibold text-forest">$0</span>
+      </div>
+      <p class="text-[11px] text-ink-muted">Taxes, duties, and shipping calculated at Shopify Checkout.</p>
+      <button onclick="openDemoCheckoutModal()" class="w-full py-3.5 rounded-lg bg-forest hover:bg-forest-dark text-white text-xs font-semibold uppercase tracking-[0.16em] transition-colors">
+        Proceed to Checkout (Demo)
+      </button>
+    </div>
+  </aside>
+
+  <!-- 2. WISHLIST DRAWER -->
+  <aside id="wishlist-drawer" class="drawer-panel fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl translate-x-full flex flex-col">
+    <div class="px-6 py-4 border-b border-hairline flex items-center justify-between">
+      <div>
+        <h2 class="font-editorial text-2xl font-medium text-ink">Saved Wishlist</h2>
+        <p class="text-[11px] text-ink-muted">Persistent browser storage preview</p>
+      </div>
+      <button onclick="closeAllDrawers()" aria-label="Close wishlist" class="p-2 text-ink-muted hover:text-ink rounded-lg">✕</button>
+    </div>
+    <div id="wishlist-items-container" class="flex-1 overflow-y-auto px-6 py-4 space-y-4"></div>
+  </aside>
+
+  <!-- 3. MOBILE NAVIGATION DRAWER -->
+  <aside id="mobile-nav-drawer" class="drawer-panel fixed top-0 left-0 h-full w-full max-w-xs bg-white z-50 shadow-2xl -translate-x-full flex flex-col">
+    <div class="px-5 py-4 border-b border-hairline flex items-center justify-between bg-forest-dark text-white">
+      <span class="font-editorial text-lg tracking-[0.2em]">EAGLES JACKETS</span>
+      <button onclick="closeAllDrawers()" aria-label="Close menu" class="p-1.5 text-white/80 hover:text-white">✕</button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-5 space-y-2">
+      <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold mb-2">Storefront Views</p>
+      <button onclick="navigateTo('home'); closeAllDrawers()" class="w-full text-left py-2.5 px-3 rounded-lg hover:bg-offwhite text-sm font-medium">Homepage</button>
+      <button onclick="openCollection('All'); closeAllDrawers()" class="w-full text-left py-2.5 px-3 rounded-lg hover:bg-offwhite text-sm font-medium">All Outerwear</button>
+      <button onclick="openCollection('Men\'s Leather'); closeAllDrawers()" class="w-full text-left py-2.5 px-3 rounded-lg hover:bg-offwhite text-sm">Men's Leather</button>
+      <button onclick="openCollection('Women\'s Jackets'); closeAllDrawers()" class="w-full text-left py-2.5 px-3 rounded-lg hover:bg-offwhite text-sm">Women's Jackets</button>
+      <button onclick="openCollection('Varsity'); closeAllDrawers()" class="w-full text-left py-2.5 px-3 rounded-lg hover:bg-offwhite text-sm">Varsity Heritage</button>
+      <button onclick="openCollection('Bomber'); closeAllDrawers()" class="w-full text-left py-2.5 px-3 rounded-lg hover:bg-offwhite text-sm">Bomber Series</button>
+      <button onclick="navigateTo('custom'); closeAllDrawers()" class="w-full text-left py-2.5 px-3 rounded-lg bg-forest/10 text-forest text-sm font-semibold mt-2">Custom Jacket Studio →</button>
+      <div class="pt-4 mt-4 border-t border-hairline">
+        <button onclick="closeAllDrawers(); openSizeGuideModal()" class="w-full text-left py-2 px-3 text-xs text-ink-muted hover:text-forest">Size &amp; Fit Guide</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 4. MOBILE FILTER DRAWER -->
+  <aside id="mobile-filter-drawer" class="drawer-panel fixed top-0 left-0 h-full w-full max-w-xs bg-white z-50 shadow-2xl -translate-x-full flex flex-col">
+    <div class="px-5 py-4 border-b border-hairline flex items-center justify-between">
+      <h3 class="font-editorial text-xl font-semibold text-ink">Filter Outerwear</h3>
+      <button onclick="closeAllDrawers()" class="p-1.5 text-ink-muted hover:text-ink">✕</button>
+    </div>
+    <div id="mobile-filter-container" class="flex-1 overflow-y-auto p-5 space-y-6"></div>
+    <div class="p-4 border-t border-hairline">
+      <button onclick="closeAllDrawers()" class="w-full py-3 rounded-lg bg-forest text-white text-xs font-semibold uppercase tracking-wider">Apply Filters</button>
+    </div>
+  </aside>
+
+  <!-- 5. PREDICTIVE SEARCH OVERLAY -->
+  <div id="search-overlay" class="hidden fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4">
+    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-hairline overflow-hidden">
+      <div class="p-4 sm:p-5 border-b border-hairline flex items-center gap-3">
+        <svg class="w-5 h-5 text-forest" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+        <input id="predictive-search-input" type="text" oninput="renderSearchResults(this.value)" placeholder="Search leather biker, varsity, bomber, shearling, custom..." class="flex-1 text-sm text-ink focus:outline-none" />
+        <button onclick="closeAllDrawers()" class="text-xs uppercase tracking-wider text-ink-muted hover:text-ink px-2 py-1">ESC</button>
+      </div>
+      <div id="predictive-search-results" class="max-h-96 overflow-y-auto p-4 divide-y divide-hairline"></div>
+    </div>
+  </div>
+
+  <!-- 6. SIZE GUIDE MODAL (INCHES / CM TOGGLE) -->
+  <div id="size-guide-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-hairline overflow-hidden">
+      <div class="px-6 py-4 bg-forest-dark text-white flex items-center justify-between">
+        <div>
+          <h3 class="font-editorial text-2xl font-medium">EAGLES JACKETS — Size &amp; Fit Guide</h3>
+          <p class="text-[11px] text-white/70">Garment measurements for tailored outerwear</p>
+        </div>
+        <button onclick="closeAllDrawers()" class="p-1.5 text-white/75 hover:text-white">✕</button>
+      </div>
+      <div class="p-6 space-y-5">
+        <div class="flex items-center justify-between">
+          <p class="text-xs text-ink-muted">Measure over a light shirt. Between sizes? Size up for layering.</p>
+          <div class="inline-flex rounded-lg border border-hairline p-0.5 bg-offwhite">
+            <button id="unit-in-btn" onclick="setSizeUnit('in')" class="px-3 py-1 rounded-md text-xs font-semibold bg-forest text-white">Inches</button>
+            <button id="unit-cm-btn" onclick="setSizeUnit('cm')" class="px-3 py-1 rounded-md text-xs font-semibold text-ink-muted">CM</button>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left border-collapse">
+            <thead>
+              <tr class="border-b border-hairline text-[11px] uppercase tracking-wider text-ink-muted bg-offwhite">
+                <th class="py-2.5 px-3">Size</th>
+                <th class="py-2.5 px-3">Chest</th>
+                <th class="py-2.5 px-3">Shoulder</th>
+                <th class="py-2.5 px-3">Sleeve</th>
+                <th class="py-2.5 px-3">Back Length</th>
+              </tr>
+            </thead>
+            <tbody id="size-guide-tbody" class="divide-y divide-hairline"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. IMAGE ZOOM LIGHTBOX MODAL -->
+  <div id="zoom-lightbox" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl border border-hairline overflow-hidden">
+      <div class="px-6 py-3.5 border-b border-hairline flex items-center justify-between">
+        <span id="zoom-lightbox-title" class="text-xs font-semibold uppercase tracking-wider text-forest">Studio Inspection View</span>
+        <button onclick="closeAllDrawers()" class="p-1.5 text-ink-muted hover:text-ink">✕</button>
+      </div>
+      <div class="p-8 sm:p-12 studio-card-bg flex items-center justify-center min-h-[420px]">
+        <div id="zoom-lightbox-svg" class="w-full max-w-md h-96 flex items-center justify-center"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. DEMO CHECKOUT NOTICE MODAL -->
+  <div id="demo-checkout-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-hairline overflow-hidden">
+      <div class="px-6 py-4 bg-forest text-white flex items-center justify-between">
+        <span class="text-xs font-semibold uppercase tracking-[0.16em] text-gold">Demo Theme Preview</span>
+        <button onclick="closeAllDrawers()" class="text-white/80 hover:text-white">✕</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <h3 class="font-editorial text-2xl font-semibold text-ink">Shopify Native Checkout Ready</h3>
+        <p class="text-xs text-ink-muted leading-relaxed">
+          This is an interactive theme preview using demonstration catalog items. In the live Shopify store, clicking Checkout routes securely to Shopify's PCI-compliant checkout with verified payment gateways, real shipping rates, and tax/duty calculation.
+        </p>
+        <div class="p-3.5 rounded-xl bg-offwhite border border-hairline text-xs text-ink">
+          <div class="flex justify-between"><span>Items in Bag:</span><strong id="demo-checkout-count">0</strong></div>
+          <div class="flex justify-between mt-1"><span>Demo Subtotal:</span><strong id="demo-checkout-total">$0</strong></div>
+        </div>
+        <button onclick="closeAllDrawers()" class="w-full py-3 rounded-lg bg-forest text-white text-xs font-semibold uppercase tracking-wider">
+          Return to Storefront Preview
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 pointer-events-none"></div>
+
+  <!-- ===================================================================== -->
+  <!-- VANILLA JAVASCRIPT APPLICATION LOGIC                                  -->
+  <!-- ===================================================================== -->
+  <script>
+    /* =========================================================================
+       1. CURRENCY & DEMO PRODUCT CATALOG DATA
+    ========================================================================= */
+    const CURRENCIES = {
+      USD: { symbol: '$', rate: 1.0, code: 'USD' },
+      GBP: { symbol: '£', rate: 0.79, code: 'GBP' },
+      CAD: { symbol: 'CA$', rate: 1.38, code: 'CAD' },
+    };
+
+    let currentCurrency = 'USD';
+    let currentView = 'home';
+    let currentHomeTab = 'all';
+    let megaMenuTimer = null;
+
+    // 10 Demo Outerwear Products across all target categories
+    const PRODUCTS = [
+      {
+        id: 'ej-01',
+        title: 'Sovereign Moto Biker Jacket',
+        category: "Men's Leather",
+        style: 'biker',
+        material: 'Full-Grain Aniline Cowhide',
+        price: 345,
+        compareAt: 420,
+        skuPrefix: 'EJ-MLJ-01',
+        badge: 'Best Seller',
+        tags: ['bestseller'],
+        inStock: true,
+        unavailableSizes: ['XS', 'XXL'],
+        shortDesc: 'Architectural asymmetric biker silhouette cut from 1.2mm drum-dyed cowhide with brushed gunmetal hardware and quilted shoulder accents.',
+        specs: '100% full-grain aniline cowhide outer, 140gsm satin-twill lining, zippered cuffs, twin chest pockets, and interior welt pocket.',
+        colors: [
+          { name: 'Obsidian Black', code: 'OBS', hex: '#1E2220', accent: '#C6A15B' },
+          { name: 'Deep Oxblood', code: 'OXB', hex: '#5C2228', accent: '#C6A15B' },
+          { name: 'Cognac Saddle', code: 'COG', hex: '#8A522C', accent: '#E5D3B3' },
+        ],
+      },
+      {
+        id: 'ej-02',
+        title: 'Belgravia Belted Leather Coat',
+        category: "Women's Jackets",
+        style: 'biker',
+        material: 'Supple Lambskin Leather',
+        price: 325,
+        compareAt: 390,
+        skuPrefix: 'EJ-WMJ-02',
+        badge: 'New Arrival',
+        tags: ['new', 'bestseller'],
+        inStock: true,
+        unavailableSizes: ['XXL'],
+        shortDesc: 'Tailored women’s lambskin jacket featuring clean notch lapels, contoured waist shaping, and subtle warm-gold zipper detailing.',
+        specs: '100% supple lambskin hide, articulated sleeves for effortless layering, tonal satin interior.',
+        colors: [
+          { name: 'Forest Green', code: 'FRG', hex: '#123D2B', accent: '#C6A15B' },
+          { name: 'Obsidian Black', code: 'OBS', hex: '#1E2220', accent: '#C6A15B' },
+          { name: 'Espresso Brown', code: 'ESP', hex: '#44322A', accent: '#C6A15B' },
+        ],
+      },
+      {
+        id: 'ej-03',
+        title: 'Highland Forest Varsity Jacket',
+        category: 'Varsity',
+        style: 'varsity',
+        material: '24oz Melton Wool & Leather',
+        price: 275,
+        compareAt: 330,
+        skuPrefix: 'EJ-VAR-03',
+        badge: 'Signature',
+        tags: ['bestseller', 'new'],
+        inStock: true,
+        unavailableSizes: ['XS'],
+        shortDesc: 'Heritage collegiate varsity crafted in signature Eagles Forest Green Melton wool with contrast cream full-grain leather sleeves.',
+        specs: '24oz virgin wool blend body, full-grain cream leather sleeves, custom stripe rib-knit collar and cuffs, matte snap front.',
+        colors: [
+          { name: 'Forest & Cream', code: 'FRC', hex: '#123D2B', accent: '#F2EFE6' },
+          { name: 'Charcoal & Ivory', code: 'CHI', hex: '#2F3432', accent: '#EFECE4' },
+          { name: 'Oxblood & Cream', code: 'OXC', hex: '#5C2228', accent: '#F2EFE6' },
+        ],
+      },
+      {
+        id: 'ej-04',
+        title: 'Aeronaut Flight Bomber',
+        category: 'Bomber',
+        style: 'bomber',
+        material: 'Matte Lambskin Leather',
+        price: 295,
+        compareAt: null,
+        skuPrefix: 'EJ-BMB-04',
+        badge: 'Best Seller',
+        tags: ['bestseller'],
+        inStock: true,
+        unavailableSizes: ['XL'],
+        shortDesc: 'Minimalist MA-1 inspired flight bomber tailored in matte lambskin with precision rib-knit trims and utility sleeve pocket.',
+        specs: 'Supple lambskin outer, storm flap interior, heavy two-way metal zip, dual angled welt pockets.',
+        colors: [
+          { name: 'Dark Forest', code: 'DFR', hex: '#0B281D', accent: '#C6A15B' },
+          { name: 'Slate Charcoal', code: 'SLC', hex: '#383E3B', accent: '#C6A15B' },
+          { name: 'Cognac Saddle', code: 'COG', hex: '#8A522C', accent: '#202820' },
+        ],
+      },
+      {
+        id: 'ej-05',
+        title: 'Alpine Shearling Collar Aviator',
+        category: "Men's Leather",
+        style: 'shearling',
+        material: 'Distressed Cowhide & Shearling',
+        price: 385,
+        compareAt: 460,
+        skuPrefix: 'EJ-MLJ-05',
+        badge: 'Limited Batch',
+        tags: ['new'],
+        inStock: true,
+        unavailableSizes: ['XS', 'S'],
+        shortDesc: 'Cold-weather aviator jacket combining burnished saddle cowhide with a plush detachable cream shearling collar.',
+        specs: '1.2mm burnished cowhide, quilted thermal lining, detachable shearling collar, reinforced storm cuffs.',
+        colors: [
+          { name: 'Cognac Saddle', code: 'COG', hex: '#7A4826', accent: '#F4EFE4' },
+          { name: 'Obsidian Black', code: 'OBS', hex: '#1E2220', accent: '#D7D2C6' },
+        ],
+      },
+      {
+        id: 'ej-06',
+        title: 'Mayfair Cropped Suede Bomber',
+        category: "Women's Jackets",
+        style: 'bomber',
+        material: 'Brushed Goat Suede',
+        price: 265,
+        compareAt: 310,
+        skuPrefix: 'EJ-WMJ-06',
+        badge: 'New Arrival',
+        tags: ['new'],
+        inStock: true,
+        unavailableSizes: ['XXL'],
+        shortDesc: 'Elevated cropped bomber rendered in velvety goat suede with refined gold zip hardware and softly structured shoulders.',
+        specs: '100% brushed goat suede, water-repellent treatment, custom tonal ribbing.',
+        colors: [
+          { name: 'Sage Forest', code: 'SGF', hex: '#1D513A', accent: '#C6A15B' },
+          { name: 'Warm Camel', code: 'CML', hex: '#A4794F', accent: '#F7F8F5' },
+        ],
+      },
+      {
+        id: 'ej-07',
+        title: 'Atelier Heavyweight Zip Hoodie',
+        category: 'Hoodies',
+        style: 'hoodie',
+        material: '520gsm French Terry Cotton',
+        price: 145,
+        compareAt: null,
+        skuPrefix: 'EJ-HDY-07',
+        badge: 'Layering Core',
+        tags: ['bestseller'],
+        inStock: true,
+        unavailableSizes: ['XXL'],
+        shortDesc: 'Structured 520gsm heavyweight cotton hoodie designed specifically to layer cleanly beneath leather and varsity outerwear.',
+        specs: '100% combed ring-spun cotton (520gsm), double-lined structured hood, brushed metal two-way zip.',
+        colors: [
+          { name: 'Forest Green', code: 'FRG', hex: '#123D2B', accent: '#C6A15B' },
+          { name: 'Off-White Chalk', code: 'OWC', hex: '#DCDFD9', accent: '#123D2B' },
+          { name: 'Charcoal Ink', code: 'CHI', hex: '#2B302D', accent: '#C6A15B' },
+        ],
+      },
+      {
+        id: 'ej-08',
+        title: 'Bespoke Varsity Commission',
+        category: 'Custom',
+        style: 'varsity',
+        material: 'Made-to-Order Wool & Hide',
+        price: 395,
+        compareAt: null,
+        skuPrefix: 'EJ-CUS-08',
+        badge: 'Made-to-Order',
+        tags: ['custom'],
+        inStock: true,
+        unavailableSizes: [],
+        shortDesc: 'Fully customizable varsity commission with your choice of wool colorway, contrast leather sleeves, fit profile, and monogram.',
+        specs: 'Individually cut and stitched in 14–21 business days. Full line-item personalization supported.',
+        colors: [
+          { name: 'Forest & Cream', code: 'FRC', hex: '#123D2B', accent: '#F2EFE6' },
+          { name: 'Obsidian & Gold', code: 'OBG', hex: '#1C201E', accent: '#C6A15B' },
+        ],
+      },
+      {
+        id: 'ej-09',
+        title: 'Monolith Cafe Racer Leather',
+        category: "Men's Leather",
+        style: 'bomber',
+        material: 'Full-Grain Drum-Dyed Leather',
+        price: 335,
+        compareAt: 380,
+        skuPrefix: 'EJ-MLJ-09',
+        badge: 'Best Seller',
+        tags: ['bestseller'],
+        inStock: false,
+        unavailableSizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+        shortDesc: 'Streamlined stand-collar cafe racer crafted for sharp urban silhouettes. Currently restocking next production cycle.',
+        specs: '1.1mm full-grain cowhide, snap mandarin collar, concealed zip chest pockets.',
+        colors: [
+          { name: 'Obsidian Black', code: 'OBS', hex: '#1E2220', accent: '#C6A15B' },
+          { name: 'Deep Forest', code: 'DFR', hex: '#0B281D', accent: '#C6A15B' },
+        ],
+      },
+      {
+        id: 'ej-10',
+        title: 'Bespoke Moto Biker Commission',
+        category: 'Custom',
+        style: 'biker',
+        material: 'Made-to-Order Hide Selection',
+        price: 440,
+        compareAt: null,
+        skuPrefix: 'EJ-CUS-10',
+        badge: 'Made-to-Order',
+        tags: ['custom', 'new'],
+        inStock: true,
+        unavailableSizes: [],
+        shortDesc: 'Commission a custom-fitted asymmetric leather biker with tailored sleeve length, hardware finish, and interior embroidered label.',
+        specs: 'Choice of Full-Grain Cowhide or Supple Lambskin. 14–21 business days production.',
+        colors: [
+          { name: 'Obsidian Black', code: 'OBS', hex: '#1E2220', accent: '#C6A15B' },
+          { name: 'Forest Green', code: 'FRG', hex: '#123D2B', accent: '#C6A15B' },
+          { name: 'Deep Oxblood', code: 'OXB', hex: '#5C2228', accent: '#C6A15B' },
+        ],
+      },
+    ];
+
+    const COLLECTIONS_META = [
+      { key: "Men's Leather", label: "Men's Leather", sub: 'Full-Grain & Moto', style: 'biker', hex: '#1E2220', accent: '#C6A15B' },
+      { key: "Women's Jackets", label: "Women's Outerwear", sub: 'Tailored Lambskin', style: 'biker', hex: '#123D2B', accent: '#C6A15B' },
+      { key: 'Varsity', label: 'Varsity Heritage', sub: '24oz Melton Wool', style: 'varsity', hex: '#123D2B', accent: '#F2EFE6' },
+      { key: 'Bomber', label: 'Bomber Series', sub: 'Flight & Suede', style: 'bomber', hex: '#0B281D', accent: '#C6A15B' },
+      { key: 'Custom', label: 'Custom Studio', sub: 'Made-to-Order', style: 'varsity', hex: '#5C2228', accent: '#F2EFE6', goCustom: true },
+    ];
+
+    /* =========================================================================
+       2. EDITORIAL SVG JACKET GENERATOR (ZERO BROKEN IMAGES)
+    ========================================================================= */
+    function renderJacketSVG(style = 'biker', color = '#123D2B', accent = '#C6A15B', view = 'front', monogram = '') {
+      const uid = 'g_' + Math.random().toString(36).slice(2, 8);
+      const sleeveColor = style === 'varsity' ? accent : color;
+      const isLightSleeve = sleeveColor.toLowerCase() === '#f2efe6' || sleeveColor.toLowerCase() === '#efece4' || sleeveColor.toLowerCase() === '#dcded9';
+      const strokeCol = isLightSleeve ? '#C8C5BA' : 'rgba(255,255,255,0.16)';
+
+      // Detail Close-up View (Collar, Zip & Stitch Macro)
+      if (view === 'detail') {
+        return `
+          <svg viewBox="0 0 240 260" class="w-full h-full max-h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="${uid}" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="${color}" />
+                <stop offset="100%" stop-color="#0B120E" />
+              </linearGradient>
+            </defs>
+            <rect x="24" y="20" width="192" height="220" rx="14" fill="url(#${uid})" stroke="${strokeCol}" stroke-width="1.5"/>
+            <!-- Diagonal Leather Grain Lines -->
+            <path d="M24 70 L216 40 M24 140 L216 110 M24 205 L216 175" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <!-- Heavy Brushed Hardware Zipper -->
+            <line x1="120" y1="20" x2="120" y2="240" stroke="${accent}" stroke-width="5" stroke-dasharray="4 3"/>
+            <rect x="111" y="96" width="18" height="28" rx="4" fill="${accent}" />
+            <circle cx="120" cy="116" r="3" fill="#0B281D"/>
+            <!-- Double-needle Stitch Line -->
+            <line x1="104" y1="26" x2="104" y2="234" stroke="rgba(255,255,255,0.28)" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="136" y1="26" x2="136" y2="234" stroke="rgba(255,255,255,0.28)" stroke-width="1" stroke-dasharray="3 3"/>
+            <!-- Woven Brand Neck Label -->
+            <rect x="66" y="42" width="108" height="26" rx="3" fill="#0B281D" stroke="${accent}" stroke-width="1"/>
+            <text x="120" y="58" text-anchor="middle" fill="#FFFFFF" font-family="Cormorant Garamond, serif" font-size="9" letter-spacing="2.4">EAGLES JACKETS</text>
+          </svg>
+        `;
+      }
+
+      // Back Studio View
+      if (view === 'back') {
+        return `
+          <svg viewBox="0 0 240 260" class="w-full h-full max-h-full drop-shadow-md" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="${uid}" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="${color}" />
+                <stop offset="100%" stop-color="${color}" stop-opacity="0.88" />
+              </linearGradient>
+            </defs>
+            <ellipse cx="120" cy="242" rx="68" ry="6" fill="rgba(11,40,29,0.12)"/>
+            <!-- Sleeves -->
+            <path d="M62 56 L26 112 L34 202 L58 202 L66 124" fill="${sleeveColor}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <path d="M178 56 L214 112 L206 202 L182 202 L174 124" fill="${sleeveColor}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <!-- Back Torso -->
+            <path d="M84 36 C96 44 144 44 156 36 L182 54 L174 218 L66 218 L58 54 Z" fill="url(#${uid})" stroke="${strokeCol}" stroke-width="1.2"/>
+            <!-- Structured Back Yoke & Center Seam -->
+            <path d="M62 84 Q120 96 178 84" stroke="rgba(255,255,255,0.22)" stroke-width="1.2" fill="none"/>
+            <line x1="120" y1="90" x2="120" y2="216" stroke="rgba(255,255,255,0.16)" stroke-width="1.2"/>
+            <!-- Ribbed Collar & Hem -->
+            <path d="M84 36 C98 46 142 46 156 36 L152 26 C138 34 102 34 88 26 Z" fill="#0B281D" stroke="${accent}" stroke-width="1"/>
+            <rect x="66" y="206" width="108" height="12" rx="2" fill="#0B281D"/>
+            <line x1="68" y1="212" x2="172" y2="212" stroke="${accent}" stroke-width="1.2" opacity="0.75"/>
+          </svg>
+        `;
+      }
+
+      // Silhouette / Fit View
+      if (view === 'fit') {
+        return `
+          <svg viewBox="0 0 240 260" class="w-full h-full max-h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="200" height="220" rx="12" fill="#F7F8F5" stroke="#E5E9E5"/>
+            <!-- Minimalist Tailoring Grid -->
+            <path d="M64 60 L176 60 M64 130 L176 130 M70 205 L170 205" stroke="#C6A15B" stroke-width="1" stroke-dasharray="3 3"/>
+            <path d="M88 42 L152 42 L176 60 L194 185 L172 187 L166 112 L166 205 L74 205 L74 112 L68 187 L46 185 L64 60 Z" fill="${color}" fill-opacity="0.14" stroke="${color}" stroke-width="1.8"/>
+            <text x="120" y="54" text-anchor="middle" fill="#123D2B" font-family="Inter, sans-serif" font-size="8" font-weight="600" letter-spacing="1.4">SHOULDER GEOMETRY</text>
+            <text x="120" y="124" text-anchor="middle" fill="#123D2B" font-family="Inter, sans-serif" font-size="8" font-weight="600" letter-spacing="1.4">CHEST DRAPE</text>
+            <text x="120" y="224" text-anchor="middle" fill="#777F78" font-family="Inter, sans-serif" font-size="8" letter-spacing="1.2">TAILORED REGULAR FIT SPEC</text>
+          </svg>
+        `;
+      }
+
+      // FRONT STUDIO VIEW (Distinct Silhouettes for Biker, Varsity, Bomber, Shearling, Hoodie)
+      const monogramTag = monogram
+        ? `<text x="148" y="106" text-anchor="middle" fill="${accent}" font-family="Cormorant Garamond, serif" font-size="14" font-weight="700" letter-spacing="1.5">${monogram.slice(0, 4)}</text>`
+        : '';
+
+      if (style === 'varsity') {
+        return `
+          <svg viewBox="0 0 240 260" class="w-full h-full max-h-full drop-shadow-md" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="120" cy="242" rx="68" ry="6" fill="rgba(11,40,29,0.12)"/>
+            <!-- Contrast Leather Sleeves -->
+            <path d="M62 56 L24 116 L34 202 L58 202 L66 122" fill="${sleeveColor}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <path d="M178 56 L216 116 L206 202 L182 202 L174 122" fill="${sleeveColor}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <!-- Ribbed Cuffs -->
+            <rect x="33" y="196" width="25" height="9" rx="2" fill="${color}" />
+            <rect x="182" y="196" width="25" height="9" rx="2" fill="${color}" />
+            <!-- Melton Wool Body -->
+            <path d="M84 38 L120 62 L156 38 L180 56 L174 218 L66 218 L60 56 Z" fill="${color}" stroke="rgba(255,255,255,0.12)" stroke-width="1.2"/>
+            <!-- Striped Rib Collar -->
+            <path d="M84 38 Q120 72 156 38 L149 28 Q120 56 91 28 Z" fill="#0B281D" stroke="${accent}" stroke-width="1.2"/>
+            <!-- Snap Placket -->
+            <line x1="120" y1="62" x2="120" y2="216" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <circle cx="120" cy="84" r="2.8" fill="${accent}"/>
+            <circle cx="120" cy="112" r="2.8" fill="${accent}"/>
+            <circle cx="120" cy="140" r="2.8" fill="${accent}"/>
+            <circle cx="120" cy="168" r="2.8" fill="${accent}"/>
+            <circle cx="120" cy="194" r="2.8" fill="${accent}"/>
+            <!-- Contrast Welt Pockets -->
+            <path d="M78 164 L96 146" stroke="${sleeveColor}" stroke-width="4" stroke-linecap="round"/>
+            <path d="M162 164 L144 146" stroke="${sleeveColor}" stroke-width="4" stroke-linecap="round"/>
+            <!-- Ribbed Hem -->
+            <rect x="66" y="206" width="108" height="12" rx="2" fill="#0B281D"/>
+            <line x1="68" y1="212" x2="172" y2="212" stroke="${accent}" stroke-width="1.4"/>
+            ${monogramTag}
+          </svg>
+        `;
+      }
+
+      if (style === 'hoodie') {
+        return `
+          <svg viewBox="0 0 240 260" class="w-full h-full max-h-full drop-shadow-md" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="120" cy="242" rx="66" ry="6" fill="rgba(11,40,29,0.10)"/>
+            <!-- Structured Hood -->
+            <path d="M82 48 C82 18 158 18 158 48 L152 62 L88 62 Z" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <path d="M96 48 C96 30 144 30 144 48" stroke="rgba(0,0,0,0.22)" stroke-width="1.5" fill="none"/>
+            <!-- Sleeves -->
+            <path d="M62 60 L26 122 L38 204 L60 204 L68 128" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <path d="M178 60 L214 122 L202 204 L180 204 L172 128" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <!-- Heavyweight Body -->
+            <path d="M62 58 L178 58 L174 218 L66 218 Z" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <!-- Drawstrings & Center Zip -->
+            <line x1="112" y1="58" x2="110" y2="96" stroke="${accent}" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="128" y1="58" x2="130" y2="96" stroke="${accent}" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="120" y1="58" x2="120" y2="216" stroke="${accent}" stroke-width="1.8" stroke-dasharray="2 2"/>
+            <!-- Kangaroo Pocket -->
+            <path d="M84 154 L156 154 L160 194 L80 194 Z" fill="rgba(0,0,0,0.08)" stroke="${strokeCol}" stroke-width="1"/>
+            ${monogramTag}
+          </svg>
+        `;
+      }
+
+      if (style === 'shearling') {
+        return `
+          <svg viewBox="0 0 240 260" class="w-full h-full max-h-full drop-shadow-md" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="120" cy="242" rx="68" ry="6" fill="rgba(11,40,29,0.12)"/>
+            <!-- Sleeves -->
+            <path d="M62 58 L24 118 L34 202 L58 202 L66 124" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <path d="M178 58 L216 118 L206 202 L182 202 L174 124" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <!-- Body -->
+            <path d="M80 42 L160 42 L180 58 L174 218 L66 218 L60 58 Z" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <!-- Plush Shearling Collar -->
+            <path d="M76 42 Q96 22 120 34 Q144 22 164 42 Q154 68 120 76 Q86 68 76 42 Z" fill="${accent}" stroke="#D5CFC0" stroke-width="1.4"/>
+            <!-- Center Zip & Buckles -->
+            <line x1="120" y1="76" x2="120" y2="216" stroke="#C6A15B" stroke-width="2.2"/>
+            <path d="M80 166 L102 150" stroke="rgba(255,255,255,0.28)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M160 166 L138 150" stroke="rgba(255,255,255,0.28)" stroke-width="2" stroke-linecap="round"/>
+            <rect x="66" y="206" width="108" height="12" rx="2" fill="rgba(0,0,0,0.22)"/>
+            ${monogramTag}
+          </svg>
+        `;
+      }
+
+      if (style === 'bomber') {
+        return `
+          <svg viewBox="0 0 240 260" class="w-full h-full max-h-full drop-shadow-md" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="120" cy="242" rx="68" ry="6" fill="rgba(11,40,29,0.12)"/>
+            <!-- Sleeves -->
+            <path d="M62 56 L26 116 L36 200 L58 200 L66 122" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <path d="M178 56 L214 116 L204 200 L182 200 L174 122" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <!-- Utility Sleeve Pocket -->
+            <rect x="38" y="106" width="14" height="22" rx="2" fill="rgba(0,0,0,0.22)" stroke="${accent}" stroke-width="0.9"/>
+            <!-- Body -->
+            <path d="M88 38 L152 38 L180 56 L174 216 L66 216 L60 56 Z" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+            <!-- Stand Rib Collar -->
+            <rect x="88" y="28" width="64" height="16" rx="4" fill="#0B281D" stroke="${accent}" stroke-width="1"/>
+            <!-- Center Metallic Zip -->
+            <line x1="120" y1="44" x2="120" y2="214" stroke="${accent}" stroke-width="2.4"/>
+            <!-- Angled Flap Pockets -->
+            <path d="M78 164 L104 150" stroke="rgba(255,255,255,0.28)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M162 164 L136 150" stroke="rgba(255,255,255,0.28)" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Ribbed Waist -->
+            <rect x="66" y="204" width="108" height="13" rx="2" fill="#0B281D"/>
+            ${monogramTag}
+          </svg>
+        `;
+      }
+
+      // Default: Biker Leather Jacket
+      return `
+        <svg viewBox="0 0 240 260" class="w-full h-full max-h-full drop-shadow-md" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="120" cy="242" rx="68" ry="6" fill="rgba(11,40,29,0.13)"/>
+          <!-- Sleeves -->
+          <path d="M60 56 L24 116 L34 202 L58 202 L66 122" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+          <path d="M180 56 L216 116 L206 202 L182 202 L174 122" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+          <!-- Main Torso -->
+          <path d="M84 38 L156 38 L180 56 L172 216 L68 216 L60 56 Z" fill="${color}" stroke="${strokeCol}" stroke-width="1.2"/>
+          <!-- Wide Biker Notch Lapels -->
+          <path d="M84 38 L114 96 L82 92 L74 62 Z" fill="rgba(255,255,255,0.08)" stroke="${strokeCol}" stroke-width="1"/>
+          <path d="M156 38 L126 96 L158 92 L166 62 Z" fill="rgba(255,255,255,0.08)" stroke="${strokeCol}" stroke-width="1"/>
+          <!-- Lapel Studs -->
+          <circle cx="88" cy="84" r="2.2" fill="${accent}"/>
+          <circle cx="152" cy="84" r="2.2" fill="${accent}"/>
+          <!-- Asymmetric Moto Zip -->
+          <line x1="132" y1="88" x2="116" y2="214" stroke="${accent}" stroke-width="2.4"/>
+          <!-- Zip Chest & Waist Pockets -->
+          <line x1="84" y1="120" x2="108" y2="112" stroke="${accent}" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="82" y1="168" x2="104" y2="152" stroke="${accent}" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="158" y1="168" x2="138" y2="152" stroke="${accent}" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- Waist Belt Strap -->
+          <rect x="68" y="202" width="104" height="10" rx="1.5" fill="rgba(0,0,0,0.28)"/>
+          <rect x="112" y="200" width="16" height="14" rx="2" stroke="${accent}" stroke-width="1.6" fill="none"/>
+          ${monogramTag}
+        </svg>
+      `;
+    }
+
+    /* =========================================================================
+       3. STATE: CART, WISHLIST, FILTERS, PDP, CUSTOM STUDIO
+    ========================================================================= */
+    let cart = [
+      {
+        uid: 'ej-03-FRC-M',
+        productId: 'ej-03',
+        title: 'Highland Forest Varsity Jacket',
+        style: 'varsity',
+        colorName: 'Forest & Cream',
+        colorHex: '#123D2B',
+        accentHex: '#F2EFE6',
+        size: 'M',
+        priceUsd: 275,
+        qty: 1,
+        properties: null,
+      },
+    ];
+
+    let wishlist = JSON.parse(localStorage.getItem('ej_wishlist_demo') || '["ej-01"]');
+
+    let filterState = {
+      category: 'All',
+      size: 'All',
+      color: 'All',
+      maxPrice: 500,
+      inStockOnly: false,
+    };
+
+    let pdpState = {
+      product: PRODUCTS[0],
+      colorIdx: 0,
+      size: 'M',
+      qty: 1,
+      viewMode: 'front',
+    };
+
+    let customState = {
+      style: 'varsity',
+      material: 'Melton Wool & Leather',
+      materialExtra: 0,
+      colorName: 'Forest Green',
+      colorHex: '#123D2B',
+      sleeve: 'Contrast Cream Leather',
+      size: 'M',
+      fit: 'Regular',
+      monogram: 'EJ',
+      patch: 'Tonal Chest Monogram (+$20)',
+      notes: '',
+    };
+
+    const STUDIO_COLORS = [
+      { name: 'Forest Green', hex: '#123D2B' },
+      { name: 'Obsidian Black', hex: '#1E2220' },
+      { name: 'Cognac Saddle', hex: '#8A522C' },
+      { name: 'Deep Oxblood', hex: '#5C2228' },
+      { name: 'Slate Charcoal', hex: '#383E3B' },
+    ];
+
+    /* =========================================================================
+       4. CURRENCY FORMATTING & NAVIGATION
+    ========================================================================= */
+    function formatPrice(usdAmount) {
+      const c = CURRENCIES[currentCurrency];
+      const converted = Math.round(usdAmount * c.rate);
+      return `${c.symbol}${converted.toLocaleString()}`;
+    }
+
+    function setCurrency(code) {
+      currentCurrency = code;
+      document.getElementById('top-currency').value = code;
+      document.getElementById('footer-currency').value = code;
+      document.querySelectorAll('[data-price-usd]').forEach((el) => {
+        el.textContent = formatPrice(Number(el.dataset.priceUsd));
+      });
+      renderHomeProducts();
+      applyCollectionFilters();
+      renderPDP();
+      renderCustomStudio();
+      renderCart();
+      renderWishlist();
+      showToast(`Shopify Markets preview switched to ${code}`);
+    }
+
+    function navigateTo(view) {
+      currentView = view;
+      ['home', 'collection', 'pdp', 'custom'].forEach((v) => {
+        document.getElementById(`view-${v}`).classList.toggle('hidden', v !== view);
+      });
+
+      document.querySelectorAll('.preview-tab').forEach((btn) => {
+        const active = btn.dataset.viewBtn === view;
+        btn.className = active
+          ? 'preview-tab px-3 py-1 rounded-md text-[11px] font-semibold tracking-wide transition-all whitespace-nowrap bg-gold text-forest-dark'
+          : 'preview-tab px-3 py-1 rounded-md text-[11px] font-medium tracking-wide transition-all whitespace-nowrap text-white/80 hover:text-white hover:bg-white/10';
+      });
+
+      if (view === 'collection') applyCollectionFilters();
+      if (view === 'pdp') renderPDP();
+      if (view === 'custom') renderCustomStudio();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openCollection(categoryName) {
+      filterState.category = categoryName || 'All';
+      navigateTo('collection');
+      renderFilterSidebars();
+      applyCollectionFilters();
+    }
+
+    function openProductById(id) {
+      const found = PRODUCTS.find((p) => p.id === id) || PRODUCTS[0];
+      pdpState = {
+        product: found,
+        colorIdx: 0,
+        size: found.unavailableSizes.includes('M') ? 'L' : 'M',
+        qty: 1,
+        viewMode: 'front',
+      };
+      navigateTo('pdp');
+    }
+
+    /* =========================================================================
+       5. MEGA MENU HELPERS
+    ========================================================================= */
+    function showMegaMenu() {
+      cancelHideMegaMenu();
+      document.getElementById('mega-menu').classList.remove('hidden');
+    }
+    function scheduleHideMegaMenu() {
+      megaMenuTimer = setTimeout(hideMegaMenu, 180);
+    }
+    function cancelHideMegaMenu() {
+      if (megaMenuTimer) clearTimeout(megaMenuTimer);
+    }
+    function hideMegaMenu() {
+      document.getElementById('mega-menu').classList.add('hidden');
+    }
+
+    /* =========================================================================
+       6. PRODUCT CARD COMPONENT & HOMEPAGE RENDERING
+    ========================================================================= */
+    function buildProductCardHTML(p) {
+      const primaryColor = p.colors[0];
+      const isWished = wishlist.includes(p.id);
+      return `
+        <article class="group bg-white rounded-2xl border border-hairline overflow-hidden hover:border-forest/40 hover:shadow-lg transition-all flex flex-col">
+          <div class="relative studio-card-bg aspect-[4/4.4] p-6 flex items-center justify-center cursor-pointer overflow-hidden" onclick="openProductById('${p.id}')">
+            <div class="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+              ${renderJacketSVG(p.style, primaryColor.hex, primaryColor.accent, 'front')}
+            </div>
+            <span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-md bg-white/95 border border-hairline text-[10px] font-semibold uppercase tracking-wider text-forest">
+              ${p.inStock ? p.badge : 'Restocking'}
+            </span>
+            <button onclick="event.stopPropagation(); toggleWishlist('${p.id}')" aria-label="Toggle wishlist" class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-white/90 border border-hairline flex items-center justify-center hover:border-forest transition-colors ${isWished ? 'text-forest' : 'text-ink-muted'}">
+              <svg class="w-4 h-4" fill="${isWished ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+            </button>
+          </div>
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-[10px] uppercase tracking-[0.14em] text-ink-muted">${p.category}</p>
+              <h3 onclick="openProductById('${p.id}')" class="font-editorial text-lg font-semibold text-ink group-hover:text-forest cursor-pointer mt-0.5 leading-snug">
+                ${p.title}
+              </h3>
+              <p class="text-[11px] text-ink-muted mt-0.5">${p.material}</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between">
+              <div class="flex items-baseline gap-2">
+                <span class="text-sm font-semibold text-forest">${formatPrice(p.price)}</span>
+                ${p.compareAt ? `<span class="text-xs text-ink-muted line-through">${formatPrice(p.compareAt)}</span>` : ''}
+              </div>
+              <div class="flex items-center gap-1.5">
+                ${p.colors.map((c) => `<span title="${c.name}" class="w-3.5 h-3.5 rounded-full border border-black/15" style="background:${c.hex}"></span>`).join('')}
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderHomeSections() {
+      // Hero & Mega Menu & Spotlight SVGs
+      document.getElementById('hero-jacket-visual').innerHTML = renderJacketSVG('varsity', '#123D2B', '#F2EFE6', 'front', 'EJ');
+      document.getElementById('mega-preview-1').innerHTML = renderJacketSVG('biker', '#1E2220', '#C6A15B', 'front');
+      document.getElementById('spotlight-custom-svg').innerHTML = renderJacketSVG('varsity', '#0B281D', '#C6A15B', 'front', 'E.J.');
+
+      // 5-Card Collection Strip
+      document.getElementById('home-collection-strip').innerHTML = COLLECTIONS_META.map((c) => `
+        <button onclick="${c.goCustom ? "navigateTo('custom')" : `openCollection('${c.key.replace("'", "\\'")}')`}" class="group text-left rounded-2xl border border-hairline bg-white overflow-hidden hover:border-forest transition-all p-4 flex flex-col justify-between">
+          <div class="studio-card-bg rounded-xl h-36 p-3 flex items-center justify-center mb-3">
+            <div class="w-24 h-28 group-hover:scale-105 transition-transform duration-300">
+              ${renderJacketSVG(c.style, c.hex, c.accent, 'front')}
+            </div>
+          </div>
+          <div>
+            <h3 class="font-editorial text-lg font-semibold text-ink group-hover:text-forest leading-tight">${c.label}</h3>
+            <p class="text-[11px] text-ink-muted mt-0.5">${c.sub}</p>
+          </div>
+        </button>
+      `).join('');
+
+      renderHomeProducts();
+    }
+
+    function filterHomeShowcase(tab) {
+      currentHomeTab = tab;
+      document.querySelectorAll('.home-tab').forEach((btn) => {
+        const active = btn.dataset.homeTab === tab;
+        btn.className = active
+          ? 'home-tab px-4 py-2 rounded-lg text-xs font-medium uppercase tracking-wider transition-all bg-forest text-white'
+          : 'home-tab px-4 py-2 rounded-lg text-xs font-medium uppercase tracking-wider transition-all bg-white border border-hairline text-ink hover:border-forest';
+      });
+      renderHomeProducts();
+    }
+
+    function renderHomeProducts() {
+      let list = PRODUCTS;
+      if (currentHomeTab !== 'all') {
+        list = PRODUCTS.filter((p) => p.tags.includes(currentHomeTab));
+      }
+      document.getElementById('home-product-grid').innerHTML = list.slice(0, 8).map(buildProductCardHTML).join('');
+    }
+
+    /* =========================================================================
+       7. COLLECTION PAGE & WORKING FILTERS
+    ========================================================================= */
+    function buildFilterControlsHTML() {
+      const categories = ['All', "Men's Leather", "Women's Jackets", 'Varsity', 'Bomber', 'Hoodies', 'Custom'];
+      const sizes = ['All', 'XS', 'S', 'M', 'L', 'XL', 'XXL'];
+      const colors = ['All', 'Forest', 'Obsidian', 'Cognac', 'Oxblood', 'Charcoal'];
+
+      return `
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-[11px] font-semibold uppercase tracking-[0.16em] text-forest mb-3">Category</h4>
+            <div class="space-y-1.5">
+              ${categories.map((cat) => `
+                <button onclick="setFilter('category', '${cat.replace("'", "\\'")}')" class="w-full text-left px-3 py-1.5 rounded-lg text-xs transition-colors ${filterState.category === cat ? 'bg-forest text-white font-medium' : 'text-ink hover:bg-offwhite'}">
+                  ${cat}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-hairline">
+            <h4 class="text-[11px] font-semibold uppercase tracking-[0.16em] text-forest mb-3">Size Availability</h4>
+            <div class="grid grid-cols-4 gap-1.5">
+              ${sizes.map((sz) => `
+                <button onclick="setFilter('size', '${sz}')" class="py-1.5 rounded-md border text-xs font-medium transition-colors ${filterState.size === sz ? 'bg-forest text-white border-forest' : 'border-hairline text-ink hover:border-forest'}">
+                  ${sz}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-hairline">
+            <h4 class="text-[11px] font-semibold uppercase tracking-[0.16em] text-forest mb-3">Color Family</h4>
+            <div class="flex flex-wrap gap-1.5">
+              ${colors.map((col) => `
+                <button onclick="setFilter('color', '${col}')" class="px-2.5 py-1 rounded-full border text-[11px] transition-colors ${filterState.color === col ? 'bg-forest text-white border-forest' : 'border-hairline text-ink hover:border-forest'}">
+                  ${col}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-hairline">
+            <div class="flex justify-between text-xs mb-2">
+              <span class="text-[11px] font-semibold uppercase tracking-[0.16em] text-forest">Max Price</span>
+              <span class="font-semibold text-ink">${formatPrice(filterState.maxPrice)}</span>
+            </div>
+            <input type="range" min="150" max="500" step="25" value="${filterState.maxPrice}" oninput="setFilter('maxPrice', Number(this.value))" class="w-full accent-forest cursor-pointer" />
+          </div>
+
+          <div class="pt-4 border-t border-hairline">
+            <label class="flex items-center gap-2.5 text-xs text-ink cursor-pointer">
+              <input type="checkbox" ${filterState.inStockOnly ? 'checked' : ''} onchange="setFilter('inStockOnly', this.checked)" class="rounded accent-forest w-4 h-4" />
+              <span>In-Stock Ready to Ship Only</span>
+            </label>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderFilterSidebars() {
+      const html = buildFilterControlsHTML();
+      document.getElementById('desktop-filter-container').innerHTML = html;
+      document.getElementById('mobile-filter-container').innerHTML = html;
+    }
+
+    function setFilter(key, value) {
+      filterState[key] = value;
+      renderFilterSidebars();
+      applyCollectionFilters();
+    }
+
+    function clearAllFilters() {
+      filterState = { category: 'All', size: 'All', color: 'All', maxPrice: 500, inStockOnly: false };
+      renderFilterSidebars();
+      applyCollectionFilters();
+    }
+
+    function applyCollectionFilters() {
+      const sortVal = document.getElementById('collection-sort')?.value || 'featured';
+      let list = PRODUCTS.filter((p) => {
+        if (filterState.category !== 'All' && p.category !== filterState.category) return false;
+        if (filterState.size !== 'All' && p.unavailableSizes.includes(filterState.size)) return false;
+        if (filterState.color !== 'All') {
+          const matchColor = p.colors.some((c) => c.name.toLowerCase().includes(filterState.color.toLowerCase()));
+          if (!matchColor) return false;
+        }
+        if (p.price > filterState.maxPrice) return false;
+        if (filterState.inStockOnly && !p.inStock) return false;
+        return true;
+      });
+
+      if (sortVal === 'price-asc') list.sort((a, b) => a.price - b.price);
+      if (sortVal === 'price-desc') list.sort((a, b) => b.price - a.price);
+
+      document.getElementById('collection-title').textContent = filterState.category === 'All' ? 'All Outerwear' : filterState.category;
+      document.getElementById('collection-count').textContent = list.length;
+
+      // Active filter pills
+      const pills = [];
+      if (filterState.category !== 'All') pills.push({ label: filterState.category, key: 'category', reset: 'All' });
+      if (filterState.size !== 'All') pills.push({ label: `Size: ${filterState.size}`, key: 'size', reset: 'All' });
+      if (filterState.color !== 'All') pills.push({ label: `Color: ${filterState.color}`, key: 'color', reset: 'All' });
+      if (filterState.maxPrice < 500) pills.push({ label: `Under ${formatPrice(filterState.maxPrice)}`, key: 'maxPrice', reset: 500 });
+      if (filterState.inStockOnly) pills.push({ label: 'In Stock', key: 'inStockOnly', reset: false });
+
+      const pillsContainer = document.getElementById('active-filter-pills');
+      pillsContainer.innerHTML =
+        pills
+          .map(
+            (pl) => `
+          <button onclick="setFilter('${pl.key}', ${typeof pl.reset === 'string' ? `'${pl.reset}'` : pl.reset})" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-offwhite border border-hairline text-[11px] text-ink hover:border-forest">
+            ${pl.label} <span class="text-ink-muted">✕</span>
+          </button>`
+          )
+          .join('') +
+        (pills.length > 0 ? `<button onclick="clearAllFilters()" class="text-xs text-forest underline ml-1">Clear all</button>` : '');
+
+      const grid = document.getElementById('collection-grid');
+      const empty = document.getElementById('collection-empty');
+      if (list.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+      } else {
+        empty.classList.add('hidden');
+        grid.innerHTML = list.map(buildProductCardHTML).join('');
+      }
+    }
+
+    /* =========================================================================
+       8. PRODUCT DETAIL PAGE (PDP) LOGIC
+    ========================================================================= */
+    const PDP_ANGLES = [
+      { key: 'front', label: 'Front Studio View' },
+      { key: 'back', label: 'Back Tailoring' },
+      { key: 'detail', label: 'Hardware & Label' },
+      { key: 'fit', label: 'Fit Spec Sheet' },
+    ];
+
+    function renderPDP() {
+      const p = pdpState.product;
+      const color = p.colors[pdpState.colorIdx] || p.colors[0];
+
+      document.getElementById('pdp-breadcrumb-cat').textContent = p.category;
+      document.getElementById('pdp-breadcrumb-title').textContent = p.title;
+      document.getElementById('pdp-material-badge').textContent = p.material;
+      document.getElementById('pdp-title').textContent = p.title;
+      document.getElementById('pdp-price').textContent = formatPrice(p.price);
+
+      const compEl = document.getElementById('pdp-compare-price');
+      if (p.compareAt) {
+        compEl.textContent = formatPrice(p.compareAt);
+        compEl.classList.remove('hidden');
+      } else {
+        compEl.classList.add('hidden');
+      }
+
+      // Dynamic SKU updates on Color / Size change
+      const sizeCode = pdpState.size === 'Custom' ? 'CUS' : pdpState.size;
+      document.getElementById('pdp-sku').textContent = `${p.skuPrefix}-${color.code}-${sizeCode}`;
+
+      // Availability indicator
+      const availEl = document.getElementById('pdp-availability');
+      if (!p.inStock) {
+        availEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500"></span> Restocking — Waitlist Only`;
+      } else if (p.category === 'Custom' || pdpState.size === 'Custom') {
+        availEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-gold"></span> Made-to-Order (14–21 Days)`;
+      } else {
+        availEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-600"></span> In Stock — Ready to Ship`;
+      }
+
+      document.getElementById('pdp-short-desc').textContent = p.shortDesc;
+      document.getElementById('pdp-full-specs').textContent = p.specs;
+      document.getElementById('pdp-selected-color-name').textContent = color.name;
+      document.getElementById('pdp-selected-size-label').textContent = pdpState.size;
+      document.getElementById('pdp-qty').textContent = pdpState.qty;
+
+      // Main Visual & Angle Label
+      const activeAngle = PDP_ANGLES.find((a) => a.key === pdpState.viewMode) || PDP_ANGLES[0];
+      document.getElementById('pdp-angle-label').textContent = activeAngle.label;
+      document.getElementById('pdp-main-visual').innerHTML = renderJacketSVG(p.style, color.hex, color.accent, pdpState.viewMode);
+
+      // Thumbnails
+      document.getElementById('pdp-thumbnails').innerHTML = PDP_ANGLES.map(
+        (a) => `
+        <button onclick="setPdpViewMode('${a.key}')" class="rounded-xl border p-2 studio-card-bg aspect-square flex flex-col items-center justify-center transition-all ${pdpState.viewMode === a.key ? 'border-forest ring-1 ring-forest' : 'border-hairline hover:border-forest/50'}">
+          <div class="w-full h-16 flex items-center justify-center">
+            ${renderJacketSVG(p.style, color.hex, color.accent, a.key)}
+          </div>
+          <span class="text-[9px] uppercase tracking-wider text-ink-muted mt-1 truncate w-full text-center">${a.key}</span>
+        </button>`
+      ).join('');
+
+      // Color Swatches
+      document.getElementById('pdp-color-swatches').innerHTML = p.colors
+        .map(
+          (c, idx) => `
+        <button onclick="setPdpColor(${idx})" title="${c.name}" class="w-8 h-8 rounded-full p-0.5 border-2 transition-all ${idx === pdpState.colorIdx ? 'border-forest scale-105' : 'border-transparent hover:border-hairline'}">
+          <span class="block w-full h-full rounded-full border border-black/15" style="background:${c.hex}"></span>
+        </button>`
+        )
+        .join('');
+
+      // Size Selector (with disabled unavailable variants)
+      const allSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'Custom'];
+      document.getElementById('pdp-size-grid').innerHTML = allSizes
+        .map((sz) => {
+          const isDisabled = sz !== 'Custom' && p.unavailableSizes.includes(sz);
+          const isSelected = pdpState.size === sz;
+          if (isDisabled) {
+            return `<button type="button" disabled title="Out of stock" class="size-disabled h-10 rounded-lg border text-xs font-medium">${sz}</button>`;
+          }
+          return `
+            <button type="button" onclick="setPdpSize('${sz}')" class="h-10 rounded-lg border text-xs font-medium transition-all ${
+              isSelected ? 'bg-forest text-white border-forest' : 'border-hairline text-ink hover:border-forest'
+            }">${sz}</button>
+          `;
+        })
+        .join('');
+
+      document.getElementById('pdp-custom-size-note').classList.toggle('hidden', pdpState.size !== 'Custom');
+
+      // Wishlist Button State
+      const wished = wishlist.includes(p.id);
+      const wBtn = document.getElementById('pdp-wishlist-btn');
+      wBtn.innerHTML = `<svg class="w-5 h-5 ${wished ? 'text-forest' : 'text-ink'}" fill="${wished ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>`;
+
+      // Related Products
+      const related = PRODUCTS.filter((item) => item.id !== p.id).slice(0, 4);
+      document.getElementById('pdp-related-grid').innerHTML = related.map(buildProductCardHTML).join('');
+    }
+
+    function setPdpViewMode(mode) {
+      pdpState.viewMode = mode;
+      renderPDP();
+    }
+    function setPdpColor(idx) {
+      pdpState.colorIdx = idx;
+      renderPDP();
+    }
+    function setPdpSize(sz) {
+      pdpState.size = sz;
+      renderPDP();
+    }
+    function adjustPdpQty(delta) {
+      pdpState.qty = Math.max(1, pdpState.qty + delta);
+      document.getElementById('pdp-qty').textContent = pdpState.qty;
+    }
+
+    function addPdpToCart() {
+      const p = pdpState.product;
+      if (!p.inStock && pdpState.size !== 'Custom') {
+        showToast('This ready-made SKU is currently restocking. Select "Custom" to commission made-to-order.');
+        return;
+      }
+      const color = p.colors[pdpState.colorIdx];
+      const uid = `${p.id}-${color.code}-${pdpState.size}`;
+      const existing = cart.find((i) => i.uid === uid);
+      if (existing) {
+        existing.qty += pdpState.qty;
+      } else {
+        cart.push({
+          uid,
+          productId: p.id,
+          title: p.title,
+          style: p.style,
+          colorName: color.name,
+          colorHex: color.hex,
+          accentHex: color.accent,
+          size: pdpState.size,
+          priceUsd: p.price,
+          qty: pdpState.qty,
+          properties: pdpState.size === 'Custom' ? { Sizing: 'Custom Made-to-Measure', 'Lead Time': '14–21 Business Days' } : null,
+        });
+      }
+      renderCart();
+      openCartDrawer();
+      showToast(`Added ${p.title} (${pdpState.size}) to bag.`);
+    }
+
+    function buyNowDemo() {
+      addPdpToCart();
+      setTimeout(openDemoCheckoutModal, 250);
+    }
+
+    function toggleAccordion(id) {
+      const panel = document.getElementById(id);
+      const icon = document.getElementById(`icon-${id}`);
+      const isHidden = panel.classList.contains('hidden');
+      panel.classList.toggle('hidden', !isHidden);
+      icon.textContent = isHidden ? '−' : '+';
+    }
+
+    function openZoomLightbox() {
+      const p = pdpState.product;
+      const color = p.colors[pdpState.colorIdx];
+      document.getElementById('zoom-lightbox-title').textContent = `${p.title} — ${color.name}`;
+      document.getElementById('zoom-lightbox-svg').innerHTML = renderJacketSVG(p.style, color.hex, color.accent, pdpState.viewMode);
+      openModal('zoom-lightbox');
+    }
+
+    /* =========================================================================
+       9. CUSTOM JACKET STUDIO LOGIC
+    ========================================================================= */
+    function updateCustom(field, val, extra = null) {
+      customState[field] = val;
+      if (field === 'material' && extra !== null) customState.materialExtra = extra;
+      renderCustomStudio();
+    }
+
+    function setStudioColor(name, hex) {
+      customState.colorName = name;
+      customState.colorHex = hex;
+      renderCustomStudio();
+    }
+
+    function getCustomPriceUsd() {
+      let base = 375;
+      if (customState.style === 'biker') base = 410;
+      if (customState.style === 'bomber') base = 365;
+      let patchExtra = 0;
+      if (customState.patch.includes('+$20')) patchExtra = 20;
+      if (customState.patch.includes('+$15')) patchExtra = 15;
+      if (customState.patch.includes('+$30')) patchExtra = 30;
+      return base + customState.materialExtra + patchExtra;
+    }
+
+    function renderCustomStudio() {
+      // Update active option buttons
+      document.querySelectorAll('.c-opt-btn').forEach((b) => {
+        const active = b.dataset.cStyle === customState.style;
+        b.className = `c-opt-btn p-3.5 rounded-xl border text-left transition-all ${active ? 'border-forest bg-forest/5 ring-1 ring-forest' : 'border-hairline hover:border-forest/40'}`;
+      });
+      document.querySelectorAll('.c-mat-btn').forEach((b) => {
+        const active = b.dataset.cMat === customState.material;
+        b.className = `c-mat-btn p-3.5 rounded-xl border text-left transition-all ${active ? 'border-forest bg-forest/5 ring-1 ring-forest' : 'border-hairline hover:border-forest/40'}`;
+      });
+      document.querySelectorAll('.c-fit-btn').forEach((b) => {
+        const active = b.dataset.cFit === customState.fit;
+        b.className = `c-fit-btn py-2.5 rounded-lg border text-xs font-medium transition-all ${active ? 'bg-forest text-white border-forest' : 'border-hairline text-ink hover:border-forest'}`;
+      });
+
+      // Swatches
+      document.getElementById('studio-color-swatches').innerHTML = STUDIO_COLORS.map(
+        (c) => `
+        <button type="button" onclick="setStudioColor('${c.name}', '${c.hex}')" title="${c.name}" class="w-8 h-8 rounded-full p-0.5 border-2 transition-all ${customState.colorName === c.name ? 'border-forest scale-105' : 'border-transparent'}">
+          <span class="block w-full h-full rounded-full border border-black/15" style="background:${c.hex}"></span>
+        </button>`
+      ).join('');
+
+      document.getElementById('studio-color-name').textContent = `${customState.colorName} (${customState.colorHex})`;
+
+      // Accent based on sleeve style
+      const accentHex = customState.sleeve === 'Contrast Cream Leather' ? '#F2EFE6' : '#C6A15B';
+
+      // Render live SVG with monogram
+      document.getElementById('custom-studio-svg').innerHTML = renderJacketSVG(
+        customState.style,
+        customState.colorHex,
+        accentHex,
+        'front',
+        customState.monogram
+      );
+
+      document.getElementById('studio-preview-badge').textContent = `${customState.style.toUpperCase()} • ${customState.material}`;
+      document.getElementById('custom-total-price').textContent = formatPrice(getCustomPriceUsd());
+      document.getElementById('custom-summary-fit').textContent = `Fit: ${customState.fit} • Size: ${customState.size}`;
+
+      // Shopify Line Item Properties Payload Preview
+      const props = {
+        Silhouette: customState.style.toUpperCase(),
+        Material: customState.material,
+        Colorway: customState.colorName,
+        Sleeves: customState.sleeve,
+        'Size / Fit': `${customState.size} (${customState.fit})`,
+        Monogram: customState.monogram || 'None',
+        Embroidery: customState.patch,
+        Notes: customState.notes ? customState.notes.slice(0, 32) + (customState.notes.length > 32 ? '…' : '') : 'Standard',
+      };
+
+      document.getElementById('custom-payload-preview').innerHTML = Object.entries(props)
+        .map(([k, v]) => `<div><span class="text-ink font-medium">${k}:</span> ${v}</div>`)
+        .join('');
+    }
+
+    function addCustomJacketToCart() {
+      const priceUsd = getCustomPriceUsd();
+      const accentHex = customState.sleeve === 'Contrast Cream Leather' ? '#F2EFE6' : '#C6A15B';
+      const uid = 'custom-' + Date.now();
+      cart.push({
+        uid,
+        productId: 'custom-studio',
+        title: `Custom ${customState.style.charAt(0).toUpperCase() + customState.style.slice(1)} Commission`,
+        style: customState.style,
+        colorName: customState.colorName,
+        colorHex: customState.colorHex,
+        accentHex,
+        size: customState.size,
+        priceUsd,
+        qty: 1,
+        properties: {
+          Material: customState.material,
+          Fit: customState.fit,
+          Sleeves: customState.sleeve,
+          Monogram: customState.monogram || 'None',
+          Embroidery: customState.patch,
+          ...(customState.notes ? { Notes: customState.notes } : {}),
+          Production: '14–21 Business Days',
+        },
+      });
+      renderCart();
+      openCartDrawer();
+      showToast('Custom commissioned jacket added with Shopify Line Item Properties.');
+    }
+
+    /* =========================================================================
+       10. AJAX CART DRAWER & WISHLIST DRAWER
+    ========================================================================= */
+    function renderCart() {
+      const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
+      const subtotalUsd = cart.reduce((sum, i) => sum + i.priceUsd * i.qty, 0);
+      document.getElementById('cart-count-badge').textContent = totalItems;
+      document.getElementById('cart-subtotal').textContent = formatPrice(subtotalUsd);
+
+      // Free Shipping Progress ($250 threshold)
+      const thresholdUsd = 250;
+      const pct = Math.min(100, Math.round((subtotalUsd / thresholdUsd) * 100));
+      document.getElementById('cart-shipping-bar').style.width = `${pct}%`;
+      document.getElementById('cart-shipping-msg').innerHTML =
+        subtotalUsd >= thresholdUsd
+          ? `<span class="text-forest">✓ Complimentary Express Worldwide Shipping unlocked.</span>`
+          : `Add <strong>${formatPrice(thresholdUsd - subtotalUsd)}</strong> more for complimentary express shipping.`;
+
+      const container = document.getElementById('cart-items-container');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="py-16 text-center space-y-3">
+            <p class="font-editorial text-2xl text-ink">Your shopping bag is empty.</p>
+            <p class="text-xs text-ink-muted">Explore our ready-made outerwear or design a custom commission.</p>
+            <button onclick="closeAllDrawers(); openCollection('All')" class="mt-2 px-5 py-2.5 rounded-lg bg-forest text-white text-xs uppercase tracking-wider font-medium">Explore Catalog</button>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = cart
+        .map(
+          (item) => `
+        <div class="flex gap-4 pb-4 border-b border-hairline">
+          <div class="w-20 h-24 rounded-xl studio-card-bg border border-hairline flex-shrink-0 p-2 flex items-center justify-center">
+            ${renderJacketSVG(item.style, item.colorHex, item.accentHex, 'front', item.properties?.Monogram && item.properties.Monogram !== 'None' ? item.properties.Monogram : '')}
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-start justify-between gap-2">
+              <h4 class="font-editorial text-base font-semibold text-ink leading-tight">${item.title}</h4>
+              <button onclick="removeCartItem('${item.uid}')" class="text-xs text-ink-muted hover:text-ink">✕</button>
+            </div>
+            <p class="text-[11px] text-ink-muted mt-0.5">${item.colorName} • Size ${item.size}</p>
+            ${
+              item.properties
+                ? `<div class="mt-2 p-2 rounded-lg bg-offwhite border border-hairline text-[10px] text-ink-muted space-y-0.5">
+                    ${Object.entries(item.properties)
+                      .map(([k, v]) => `<div><strong class="text-ink">${k}:</strong> ${v}</div>`)
+                      .join('')}
+                   </div>`
+                : ''
+            }
+            <div class="mt-3 flex items-center justify-between">
+              <div class="inline-flex items-center border border-hairline rounded-md">
+                <button onclick="updateCartQty('${item.uid}', -1)" class="px-2 py-0.5 text-xs hover:bg-offwhite">−</button>
+                <span class="px-2.5 text-xs font-medium">${item.qty}</span>
+                <button onclick="updateCartQty('${item.uid}', 1)" class="px-2 py-0.5 text-xs hover:bg-offwhite">+</button>
+              </div>
+              <span class="text-xs font-semibold text-forest">${formatPrice(item.priceUsd * item.qty)}</span>
+            </div>
+          </div>
+        </div>`
+        )
+        .join('');
+    }
+
+    function updateCartQty(uid, delta) {
+      const item = cart.find((i) => i.uid === uid);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter((i) => i.uid !== uid);
+      renderCart();
+    }
+
+    function removeCartItem(uid) {
+      cart = cart.filter((i) => i.uid !== uid);
+      renderCart();
+    }
+
+    function toggleWishlist(productId) {
+      if (wishlist.includes(productId)) {
+        wishlist = wishlist.filter((id) => id !== productId);
+        showToast('Removed from Wishlist.');
+      } else {
+        wishlist.push(productId);
+        showToast('Saved to Wishlist.');
+      }
+      localStorage.setItem('ej_wishlist_demo', JSON.stringify(wishlist));
+      renderWishlist();
+      renderHomeProducts();
+      applyCollectionFilters();
+      if (currentView === 'pdp') renderPDP();
+    }
+
+    function toggleWishlistCurrentPdp() {
+      toggleWishlist(pdpState.product.id);
+    }
+
+    function renderWishlist() {
+      const badge = document.getElementById('wishlist-count-badge');
+      badge.textContent = wishlist.length;
+      badge.classList.toggle('hidden', wishlist.length === 0);
+
+      const container = document.getElementById('wishlist-items-container');
+      const items = PRODUCTS.filter((p) => wishlist.includes(p.id));
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div class="py-16 text-center space-y-2">
+            <p class="font-editorial text-2xl text-ink">No saved pieces yet.</p>
+            <p class="text-xs text-ink-muted">Tap the heart icon on any jacket to bookmark it.</p>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = items
+        .map(
+          (p) => `
+        <div class="flex gap-4 pb-4 border-b border-hairline">
+          <div onclick="closeAllDrawers(); openProductById('${p.id}')" class="cursor-pointer w-20 h-24 rounded-xl studio-card-bg border border-hairline p-2 flex items-center justify-center flex-shrink-0">
+            ${renderJacketSVG(p.style, p.colors[0].hex, p.colors[0].accent, 'front')}
+          </div>
+          <div class="flex-1">
+            <h4 onclick="closeAllDrawers(); openProductById('${p.id}')" class="cursor-pointer font-editorial text-base font-semibold text-ink hover:text-forest">${p.title}</h4>
+            <p class="text-[11px] text-ink-muted">${p.material}</p>
+            <p class="text-xs font-semibold text-forest mt-1">${formatPrice(p.price)}</p>
+            <div class="mt-2.5 flex items-center gap-3">
+              <button onclick="closeAllDrawers(); openProductById('${p.id}')" class="text-[11px] font-semibold uppercase tracking-wider text-forest underline">View Piece</button>
+              <button onclick="toggleWishlist('${p.id}')" class="text-[11px] text-ink-muted hover:text-ink">Remove</button>
+            </div>
+          </div>
+        </div>`
+        )
+        .join('');
+    }
+
+    /* =========================================================================
+       11. PREDICTIVE SEARCH & SIZE GUIDE MODAL
+    ========================================================================= */
+    function renderSearchResults(query = '') {
+      const q = query.trim().toLowerCase();
+      const matches = q
+        ? PRODUCTS.filter(
+            (p) =>
+              p.title.toLowerCase().includes(q) ||
+              p.category.toLowerCase().includes(q) ||
+              p.material.toLowerCase().includes(q)
+          )
+        : PRODUCTS.slice(0, 5);
+
+      const container = document.getElementById('predictive-search-results');
+      if (matches.length === 0) {
+        container.innerHTML = `<div class="py-10 text-center text-xs text-ink-muted">No outerwear found matching "<strong>${query}</strong>".</div>`;
+        return;
+      }
+
+      container.innerHTML = matches
+        .map(
+          (p) => `
+        <button onclick="closeAllDrawers(); openProductById('${p.id}')" class="w-full py-3 flex items-center gap-4 hover:bg-offwhite px-2 rounded-xl transition-colors text-left">
+          <div class="w-12 h-14 rounded-lg studio-card-bg border border-hairline p-1 flex-shrink-0 flex items-center justify-center">
+            ${renderJacketSVG(p.style, p.colors[0].hex, p.colors[0].accent, 'front')}
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-editorial text-base font-semibold text-ink truncate">${p.title}</p>
+            <p class="text-[11px] text-ink-muted">${p.category} • ${p.material}</p>
+          </div>
+          <span class="text-xs font-semibold text-forest">${formatPrice(p.price)}</span>
+        </button>`
+        )
+        .join('');
+    }
+
+    const SIZE_CHART_IN = [
+      { s: 'XS', chest: 38, shoulder: 17.0, sleeve: 24.5, length: 24.5 },
+      { s: 'S', chest: 40, shoulder: 17.8, sleeve: 25.0, length: 25.2 },
+      { s: 'M', chest: 42, shoulder: 18.5, sleeve: 25.5, length: 26.0 },
+      { s: 'L', chest: 45, shoulder: 19.3, sleeve: 26.2, length: 26.8 },
+      { s: 'XL', chest: 48, shoulder: 20.1, sleeve: 26.8, length: 27.5 },
+      { s: 'XXL', chest: 51, shoulder: 21.0, sleeve: 27.4, length: 28.2 },
+    ];
+
+    function setSizeUnit(unit) {
+      const inBtn = document.getElementById('unit-in-btn');
+      const cmBtn = document.getElementById('unit-cm-btn');
+      inBtn.className = unit === 'in' ? 'px-3 py-1 rounded-md text-xs font-semibold bg-forest text-white' : 'px-3 py-1 rounded-md text-xs font-semibold text-ink-muted';
+      cmBtn.className = unit === 'cm' ? 'px-3 py-1 rounded-md text-xs font-semibold bg-forest text-white' : 'px-3 py-1 rounded-md text-xs font-semibold text-ink-muted';
+
+      const mult = unit === 'cm' ? 2.54 : 1;
+      const suffix = unit === 'cm' ? ' cm' : '"';
+      document.getElementById('size-guide-tbody').innerHTML = SIZE_CHART_IN.map(
+        (r) => `
+        <tr class="hover:bg-offwhite/60">
+          <td class="py-2.5 px-3 font-semibold text-forest">${r.s}</td>
+          <td class="py-2.5 px-3">${(r.chest * mult).toFixed(1)}${suffix}</td>
+          <td class="py-2.5 px-3">${(r.shoulder * mult).toFixed(1)}${suffix}</td>
+          <td class="py-2.5 px-3">${(r.sleeve * mult).toFixed(1)}${suffix}</td>
+          <td class="py-2.5 px-3">${(r.length * mult).toFixed(1)}${suffix}</td>
+        </tr>`
+      ).join('');
+    }
+
+    /* =========================================================================
+       12. DRAWER / MODAL CONTROLS & TOASTS
+    ========================================================================= */
+    function closeAllDrawers() {
+      document.getElementById('drawer-backdrop').classList.add('hidden');
+      document.getElementById('cart-drawer').classList.add('translate-x-full');
+      document.getElementById('wishlist-drawer').classList.add('translate-x-full');
+      document.getElementById('mobile-nav-drawer').classList.add('-translate-x-full');
+      document.getElementById('mobile-filter-drawer').classList.add('-translate-x-full');
+      ['search-overlay', 'size-guide-modal', 'zoom-lightbox', 'demo-checkout-modal'].forEach((id) => {
+        document.getElementById(id).classList.add('hidden');
+      });
+    }
+
+    function openCartDrawer() {
+      closeAllDrawers();
+      document.getElementById('drawer-backdrop').classList.remove('hidden');
+      document.getElementById('cart-drawer').classList.remove('translate-x-full');
+    }
+
+    function openWishlistDrawer() {
+      closeAllDrawers();
+      document.getElementById('drawer-backdrop').classList.remove('hidden');
+      document.getElementById('wishlist-drawer').classList.remove('translate-x-full');
+    }
+
+    function openMobileNav() {
+      closeAllDrawers();
+      document.getElementById('drawer-backdrop').classList.remove('hidden');
+      document.getElementById('mobile-nav-drawer').classList.remove('-translate-x-full');
+    }
+
+    function openMobileFilterDrawer() {
+      closeAllDrawers();
+      document.getElementById('drawer-backdrop').classList.remove('hidden');
+      document.getElementById('mobile-filter-drawer').classList.remove('-translate-x-full');
+    }
+
+    function openModal(id) {
+      closeAllDrawers();
+      document.getElementById('drawer-backdrop').classList.remove('hidden');
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function openSearchOverlay() {
+      openModal('search-overlay');
+      renderSearchResults('');
+      setTimeout(() => document.getElementById('predictive-search-input').focus(), 60);
+    }
+
+    function openSizeGuideModal() {
+      setSizeUnit('in');
+      openModal('size-guide-modal');
+    }
+
+    function openDemoCheckoutModal() {
+      const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+      const subtotalUsd = cart.reduce((s, i) => s + i.priceUsd * i.qty, 0);
+      document.getElementById('demo-checkout-count').textContent = totalItems;
+      document.getElementById('demo-checkout-total').textContent = formatPrice(subtotalUsd);
+      openModal('demo-checkout-modal');
+    }
+
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      document.getElementById('newsletter-email').value = '';
+      showToast('Subscribed to EAGLES JACKETS Private Client List (Demo).');
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      const el = document.createElement('div');
+      el.className = 'mt-2 px-4 py-3 rounded-xl bg-forest-dark text-white border border-gold/40 shadow-xl text-xs flex items-center gap-2.5 max-w-xs';
+      el.innerHTML = `<span class="w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><span>${message}</span>`;
+      container.appendChild(el);
+      setTimeout(() => el.remove(), 3400);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllDrawers();
+    });
+
+    /* =========================================================================
+       13. INITIALIZE APPLICATION
+    ========================================================================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+      renderHomeSections();
+      renderFilterSidebars();
+      renderCart();
+      renderWishlist();
+      renderCustomStudio();
+      navigateTo('home');
+    });
+  </script>
+</body>
+</html>
